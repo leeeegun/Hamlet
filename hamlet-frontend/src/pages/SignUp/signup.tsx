@@ -1,42 +1,41 @@
 import React from 'react';
-import '../../App.css';
 import logo from '../../logo2.png';
+import { StyledSignup, StyledLabel, StyledForm, Styledfieldset, StyledInput, StyledSubmit, StyledLogo, StyledButton } from './styles';
+import { Link } from 'react-router-dom';
 
 function Signup() {
   return (
-    <div className="App-header">
-      <form action="" className='form_'>
-        <fieldset className='fieldset'>
-          <img src={logo} className="form-logo" alt="logo" />
-        </fieldset>
+    <StyledSignup>
+      <StyledForm>
+        <Styledfieldset>
+          <StyledLogo src={logo} alt="logo" />
+        </Styledfieldset>
         <div className=''>
-          <label className='label-signup'>Id</label>
-          <input type="text" className="input-signup" placeholder='Id'/>
+          <StyledLabel>Id</StyledLabel>
+          <StyledInput type="text" placeholder='Id' />
         </div>
         <div>
-          <label className='label-signup'>NickName</label>
-          <input type="text" className="input-signup" placeholder='NickName'/>
+          <StyledLabel>NickName</StyledLabel>
+          <StyledInput type="text" placeholder='NickName' />
         </div>
         <div>
-          <label className='label-signup'>Email</label>
-          <input type="text" className="input-signup" placeholder='Email'/>
+          <StyledLabel>Email</StyledLabel>
+          <StyledInput type="text" placeholder='Email' />
         </div>
         <div>
-          <label className='label-signup'>Password</label>
-          <input type="text" className="input-signup" placeholder='Password'/>
+          <StyledLabel>Password</StyledLabel>
+          <StyledInput type="text" placeholder='Password' />
         </div>
         <div>
-          <label className='label-signup'>Confirm</label>
-          <input type="text" className="input-signup" placeholder='Confirm Password'/>
+          <StyledLabel>Confirm Password</StyledLabel>
+          <StyledInput type="text" placeholder='Confirm Password' />
         </div>
-        <div>
-          <input type="submit" value='회원가입' className='signup-submit' />
-        </div>
-        <div>
-          <input type="submit" value='돌아가기' className='signup-submit' />
-        </div>
-      </form>
-    </div>
+        <StyledSubmit type="submit" value='회원가입' />
+        <Link to="/">
+          <StyledButton>돌아가기</StyledButton>
+        </Link>
+      </StyledForm>
+    </StyledSignup>
   );
 }
 

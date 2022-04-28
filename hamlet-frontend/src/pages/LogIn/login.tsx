@@ -1,30 +1,29 @@
 import React from 'react';
-import '../../App.css';
 import logo from '../../logo2.png';
+import { StyledLogin, StyledLabel, StyledForm, Styledfieldset, StyledInput, StyledSubmit, StyledLogo, StyledButton } from './styles';
+import { Link } from 'react-router-dom';
 
 function Login() {
   return (
-    <div className="App-header">
-      <form action="" className='form_'>
-        <fieldset className='fieldset'>
-          <img src={logo} className="form-logo" alt="logo" />
-        </fieldset>
-        <div className=''>
-          <label className='label-signup'>Id</label>
-          <input type="text" className="input-signup" placeholder='Id'/>
+    <StyledLogin>
+      <StyledForm>
+        <Styledfieldset>
+          <StyledLogo src={logo} alt="logo"/>
+        </Styledfieldset>
+        <div>
+          <StyledLabel>Id</StyledLabel>
+          <StyledInput type="text" placeholder='Id'/>
         </div>
         <div>
-          <label className='label-signup'>Password</label>
-          <input type="text" className="input-signup" placeholder='Password'/>
+          <StyledLabel>Password</StyledLabel>
+          <StyledInput type="text" placeholder='Password'/>
         </div>
-        <div>
-          <input type="submit" value='로그인' className='signup-submit' />
-        </div>
-        <div>
-          <input type="submit" value='돌아가기' className='signup-submit' />
-        </div>
-      </form>
-    </div>
+        <StyledSubmit type="submit" value='로그인' />
+        <Link to="/">
+          <StyledButton>돌아가기</StyledButton>
+        </Link>
+      </StyledForm>
+    </StyledLogin>
   );
 }
 export default Login;

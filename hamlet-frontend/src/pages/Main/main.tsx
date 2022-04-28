@@ -1,25 +1,24 @@
 import React from 'react';
 import logo from '../../logo.png';
-import { Link } from 'react-router-dom';
-import '../../App.css';
-//import Login from '../Auth/login';
+import { StyledInput, StyledHeader, StyledApp, StyledLogo, StyledLink } from './styles';
 
 function Main() {
   return(
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <StyledApp>
+      <StyledHeader>
+        <StyledLogo src={logo} alt="logo" />
         <div>
-          <input type="text" placeholder="코드입력" className="input-code"></input>
+          <StyledInput type="text" placeholder="코드입력"/>
           <br/>
-          <input type="submit" value="Submit" className="input-code" style={{ backgroundColor: '#3A342F', color:"#F2E9DF" }}></input>
+          <StyledInput type="submit" value="Submit" style={{ backgroundColor: '#3A342F', color:"#F2E9DF" }}/>
           <br/>
-          <Link to="/login">로그인</Link>
+          <StyledLink to="/login">로그인</StyledLink>
           &nbsp;&nbsp;&nbsp;
-          <Link to="/signup">회원가입</Link>
+          <StyledLink to="/signup">회원가입</StyledLink>
         </div>
-      </header>
-    </div>
+        </StyledHeader>
+    </StyledApp>
   );
 }
+
 export default Main;
