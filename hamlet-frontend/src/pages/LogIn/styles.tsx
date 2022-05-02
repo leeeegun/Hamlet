@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 const StyledLogin = styled.div`
   background-color: #FF961C;
@@ -21,12 +20,15 @@ const StyledForm = styled.form`
 `;
 
 const Styledfieldset = styled.fieldset`
+  height: 4vmin;
+  display: flex;
+  flex-direction: column;
   background-color: #4F3F28;
   border-radius: 10px;
 `;
 
 const StyledInput = styled.input`
-  margin: 0.3em 0.5em 0 0.8em;
+  margin: 0.3em 0.5em 0.5em 1em;
   width: 90%;
   height: 30px;
   background-color: #F2E9DF;
@@ -35,18 +37,18 @@ const StyledInput = styled.input`
   text-align: center;
 `;
 
-const StyledButton = styled.button`
-  margin: 0.5em 0.7em 0.3em 0.7em;
-  width: 95%;
+const StyledSubmit = styled.input`
+  margin: 0.5em 0.7em 0 0.9em;
+  width: 50%;
   height: 2.5em;
   border-radius: 10px;
   color: white;
   background-color: #4F3F28;
 `;
 
-const StyledSubmit = styled.input`
-  margin: 0.5em 0.7em 0.3em 0.7em;
-  width: 95%;
+const StyledButton = styled.button`
+  margin: 0.3em 0.7em 0 0.9em;
+  width: 50%;
   height: 2.5em;
   border-radius: 10px;
   color: white;
@@ -54,19 +56,22 @@ const StyledSubmit = styled.input`
 `;
 
 const StyledLogo = styled.img`
-  height: 10vmin;
+  height: 5vmin;
   pointer-events: none;
 `;
 
 const StyledLabel = styled.label`
-  margin: 0 0.5em 0 0.8em;
+  margin: 0 0.5em 0 1em;
   color: black;
   font-size: 20px;
 `;
 
-const StyledLink = styled(Link)`
-  font-size: 13px;
-  text-decoration: none;
+
+const StyledDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
-export { StyledLogin, StyledForm, Styledfieldset, StyledInput, StyledSubmit, StyledLogo, StyledLabel, StyledLink, StyledButton };
+export { StyledLogin, StyledForm, Styledfieldset, StyledInput, StyledSubmit, StyledLogo, StyledLabel, StyledButton, StyledDiv };

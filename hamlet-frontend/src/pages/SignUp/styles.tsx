@@ -20,6 +20,9 @@ const StyledForm = styled.form`
 `;
 
 const Styledfieldset = styled.fieldset`
+  height: 5vmin;
+  display: flex;
+  flex-direction: column;
   background-color: #4F3F28;
   border-radius: 10px;
 `;
@@ -35,8 +38,8 @@ const StyledInput = styled.input`
 `;
 
 const StyledSubmit = styled.input`
-  margin: 0.5em 0.7em 0.3em 0.7em;
-  width: 95%;
+  margin: 0 0.7em 0 0.9em;
+  width: 50%;
   height: 2.5em;
   border-radius: 10px;
   color: white;
@@ -44,7 +47,7 @@ const StyledSubmit = styled.input`
 `;
 
 const StyledLogo = styled.img`
-  height: 10vmin;
+  height: 6vmin;
   pointer-events: none;
 `;
 
@@ -55,12 +58,20 @@ const StyledLabel = styled.label`
 `;
 
 const StyledButton = styled.button`
-  margin: 0.5em 0.7em 0.3em 0.7em;
-  width: 95%;
+  margin: 0.3em 0.7em 0.3em 0.9em;
+  width: 50%;
   height: 2.5em;
   border-radius: 10px;
   color: white;
   background-color: #4F3F28;
 `;
 
-export { StyledSignup, StyledForm, Styledfieldset, StyledInput, StyledSubmit, StyledLogo, StyledLabel, StyledButton };
+const StyledDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+
+export { StyledSignup, StyledForm, Styledfieldset, StyledInput, StyledSubmit, StyledDiv, StyledLogo, StyledLabel, StyledButton };

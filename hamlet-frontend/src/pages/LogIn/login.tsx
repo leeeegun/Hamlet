@@ -1,9 +1,10 @@
 import React from 'react';
 import logo from '../../logo2.png';
-import { StyledLogin, StyledLabel, StyledForm, Styledfieldset, StyledInput, StyledSubmit, StyledLogo, StyledButton } from './styles';
-import { Link } from 'react-router-dom';
+import { StyledLogin, StyledLabel, StyledForm, Styledfieldset, StyledInput, StyledSubmit, StyledButton, StyledLogo, StyledDiv } from './styles';
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  let navigate = useNavigate();
   return (
     <StyledLogin>
       <StyledForm>
@@ -18,10 +19,11 @@ function Login() {
           <StyledLabel>Password</StyledLabel>
           <StyledInput type="text" placeholder='Password'/>
         </div>
-        <StyledSubmit type="submit" value='로그인' />
-        <Link to="/">
-          <StyledButton>돌아가기</StyledButton>
-        </Link>
+        <hr/>
+        <StyledDiv>
+          <StyledSubmit type="submit" value='로그인' />
+          <StyledButton onClick={ () => {navigate('/')}}>돌아가기</StyledButton>
+        </StyledDiv>
       </StyledForm>
     </StyledLogin>
   );
