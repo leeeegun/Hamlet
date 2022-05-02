@@ -1,4 +1,4 @@
-package com.hamlet.db.entity.dd;
+package com.hamlet.db.entity;
 
 import lombok.Generated;
 import lombok.Getter;
@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -32,7 +31,7 @@ public class User {
     public void setHamlets(Hamlet hamlet) {
     	this.hamlets.add(hamlet);
     	if(hamlet.getUser() != this) {
-    	hamlet.setUser(this);
+    	    hamlet.setUser(this);
     	}
     }
 }

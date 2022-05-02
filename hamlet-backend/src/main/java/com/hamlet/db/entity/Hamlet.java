@@ -1,4 +1,4 @@
-package com.hamlet.db.entity.dd;
+package com.hamlet.db.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "hamlets")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -21,6 +20,7 @@ public class Hamlet {
     Long id;
 
     String title;
+
     LocalDateTime created_at;
 
     @ManyToOne
@@ -33,7 +33,14 @@ public class Hamlet {
     public void setUser(User user) {
     	this.user = user;
     	if(!user.getHamlets().contains(this)) {
-    	user.getHamlets().add(this);
+    	    user.getHamlets().add(this);
     	}
+    }
+
+    public void setQuestions(Question question) {
+        this.questions.add(question);
+        if(question.getHamlet() != this) {
+            question.setHamlet(this);
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.hamlet.db.entity.dd;
+package com.hamlet.db.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,27 +11,26 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "questions")
 @Getter
 @Setter
 @NoArgsConstructor
 public class Question {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	long id;
+	Long id;
 	
 	@ManyToOne
-	@JoinColumn(name = "question_id")
+	@JoinColumn(name = "hamlet_id")
 	Hamlet hamlet;
 	
-	int kinds;
+	Integer kinds;
 	
-	int points;
+	Integer points;
 	
-	int time;
+	Integer time;
 	
-	int orders;
+	Integer orders;
 	
-	boolean multiple;
+	Boolean multiple;
 	
 	String contents;
 	
@@ -41,7 +40,14 @@ public class Question {
 	public void setHamlet(Hamlet hamlet) {
 		this.hamlet = hamlet;
 		if(!hamlet.getQuestions().contains(this)) {
-		hamlet.getQuestions().add(this);
+			hamlet.getQuestions().add(this);
+		}
+	}
+
+	public void setOptions(Option option) {
+		this.options.add(option);
+		if(option.getQuestion() != this) {
+			option.setQuestion(this);
 		}
 	}
 }
