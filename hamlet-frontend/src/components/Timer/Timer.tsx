@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 
 type TimeProps = {
@@ -34,3 +35,6 @@ const Timer = ({ mm, ss } : TimeProps) => {
 };
 
 export default Timer;
+=======
+export {}
+>>>>>>> 05c0232451d7cab136ca4ffbb73b49a03cffff15

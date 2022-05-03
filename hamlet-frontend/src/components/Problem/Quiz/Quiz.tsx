@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import { StyledDiv } from './styles';
 
@@ -17,3 +18,6 @@ function Quiz({ title, quest } : QuestionProps) {
 }
 
 export default Quiz;
+=======
+export {}
+>>>>>>> 05c0232451d7cab136ca4ffbb73b49a03cffff15
