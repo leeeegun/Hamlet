@@ -1,7 +1,8 @@
 import React from 'react';
-import logo from '../../logo.png';
+import logo from '../../images/logo.png';
 import { StyledLogo, StyledApp, StyledRoom } from './styles';
 import Participant from '../../components/Participant/Participant';
+import NumberOfparticipants from '../../components/Participant/number/numberOfparticipants';
 
 function WaitingRoomPlayer() {
   
@@ -10,9 +11,10 @@ function WaitingRoomPlayer() {
       <StyledRoom>
         <StyledLogo src={logo} alt="logo" />
         <label>#14D2T</label>
+        <NumberOfparticipants />
+        <br/>
         <Participant></Participant>
       </StyledRoom>
-      
     </StyledApp>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../logo2.png';
+import logo from '../../images/logo2.png';
 import { StyledLogin, StyledLabel, StyledForm, Styledfieldset, StyledInput, StyledSubmit, StyledButton, StyledLogo, StyledDiv } from './styles';
 import { useNavigate } from "react-router-dom";
 
