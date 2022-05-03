@@ -8,5 +8,6 @@ import java.util.List;
 
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Long> {
-    List<Question> findAllByHamlet(Long hamletId);
+    List<Question> findAllByHamletId(Long hamletId);
+    Long countByHamletId(Long hamletId);
 }

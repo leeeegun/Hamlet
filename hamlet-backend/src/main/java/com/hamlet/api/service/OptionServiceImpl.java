@@ -22,13 +22,10 @@ public class OptionServiceImpl implements OptionService {
 
     @Override
     public void createOption(OptionPostReq res) {
-        Option option = new Option();
 
         Question question = questionRepository.findById(res.getQuestionId()).get();
 
-        option.setQuestion(question);
-        option.setContents(res.getContents());
-        option.setAnswer(res.getAnswer());
+        Option option = new Option(question, res);
 
         optionRepository.save(option);
     }
@@ -45,7 +42,7 @@ public class OptionServiceImpl implements OptionService {
 
     @Override
     public List<Option> findAllOption(Long questionId) {
-        List<Option> options = optionRepository.findAllByQuestion(questionId);
+        List<Option> options = optionRepository.findAllByQuestionId(questionId);
 
         return options;
     }

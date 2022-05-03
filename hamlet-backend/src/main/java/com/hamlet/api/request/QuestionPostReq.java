@@ -22,9 +22,6 @@ public class QuestionPostReq {
     @ApiModelProperty(name = "질문 시간", example = "10")
     Integer time;
 
-    @ApiModelProperty(name = "질문 순서", example = "1")
-    Integer orders;
-
     @ApiModelProperty(name = "다중 정답 유무", example = "true")
     Boolean multiple;
 

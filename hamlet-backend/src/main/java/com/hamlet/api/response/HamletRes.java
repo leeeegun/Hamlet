@@ -5,30 +5,47 @@ import java.util.List;
 
 import com.hamlet.db.entity.Hamlet;
 
+import com.hamlet.db.entity.Question;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @ApiModel("HamletResponse")
 public class HamletRes {
 
+	public HamletRes(Hamlet hamlet){
+		this.hamletId = hamlet.getId();
+		this.title = hamlet.getTitle();
+	}
+
+	@ApiModelProperty(name = "햄릿 아이디", example = "1")
+	Long hamletId;
+
 	@ApiModelProperty(name = "햄릿 이름", example = "서울 2반")
 	String title;
-	private List<HamletRes> hamlets = new ArrayList<>();
+
+	private List<QuestionInfoRes> questions = new ArrayList<>();
 	
-	public static HamletRes of(List<Hamlet> h) {
-		HamletRes res = new HamletRes();
-		for (Hamlet hamlet : h) {
-			res.hamlets.add(new HamletRes(hamlet.getTitle()));
+	public static List<HamletRes> of(List<Hamlet> hamlets) {
+		List<HamletRes> hamletListRes = new ArrayList<>();
+
+		for (Hamlet hamlet : hamlets) {
+			HamletRes hamletRes = new HamletRes(hamlet);
+
+			for(Question question : hamlet.getQuestions()) {
+				QuestionInfoRes questionRes = new QuestionInfoRes(question);
+
+				hamletRes.questions.add(questionRes);
+			}
+
+			hamletListRes.add(hamletRes);
 		}
 		
-		return res;
+		return hamletListRes;
 	}
 	
-	HamletRes(String title){
-		this.title = title;
-	}
+
 }

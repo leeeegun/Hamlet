@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.*;
 
 
+import com.hamlet.api.request.QuestionPostReq;
+import com.hamlet.api.request.QuestionPutReq;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,8 +15,18 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(name = "questions")
 @NoArgsConstructor
 public class Question {
+	public Question(QuestionPostReq question, Hamlet hamlet) {
+		this.setHamlet(hamlet);
+		this.kinds = question.getKinds();
+		this.points = question.getPoint();
+		this.time = question.getTime();
+		this.multiple = question.getMultiple();
+		this.contents = question.getContents();
+	}
+
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	
@@ -28,7 +40,7 @@ public class Question {
 	
 	Integer time;
 	
-	Integer orders;
+	Long orders;
 	
 	Boolean multiple;
 	
@@ -40,7 +52,7 @@ public class Question {
 	public void setHamlet(Hamlet hamlet) {
 		this.hamlet = hamlet;
 		if(!hamlet.getQuestions().contains(this)) {
-			hamlet.getQuestions().add(this);
+			hamlet.setQuestions(this);
 		}
 	}
 

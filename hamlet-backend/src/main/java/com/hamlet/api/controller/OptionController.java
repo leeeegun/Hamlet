@@ -32,8 +32,8 @@ public class OptionController {
             @ApiResponse(code = 401, message = "실패", response = BaseResponseBody.class)
     })
     public ResponseEntity<? extends BaseResponseBody> create(
-            @RequestBody @ApiParam(value = "선택지 작성 정보", required = true) OptionPostReq optionPostReq)
-    {
+            @RequestBody @ApiParam(value = "선택지 작성 정보", required = true) OptionPostReq optionPostReq
+    ){
         try {
             optionService.createOption(optionPostReq);
             return ResponseEntity.status(201).body(BaseResponseBody.of(201, "Success"));
@@ -50,8 +50,8 @@ public class OptionController {
     })
     public ResponseEntity<? extends BaseResponseBody> update(
             @PathVariable @ApiParam(value = "해당 옵션 아이디") Long optionId,
-            @RequestBody @ApiParam(value = "옵션 수정 정보", required = true) OptionPutReq optionPutReq)
-    {
+            @RequestBody @ApiParam(value = "옵션 수정 정보", required = true) OptionPutReq optionPutReq
+    ){
         try {
             optionService.modifyOption(optionId, optionPutReq);
             return ResponseEntity.status(201).body(BaseResponseBody.of(201, "Success"));
@@ -67,8 +67,8 @@ public class OptionController {
             @ApiResponse(code = 401, message = "실패", response = BaseResponseBody.class)
     })
     public ResponseEntity<?> readAll(
-            @PathVariable @ApiParam(value = "질문 아이디", required = true) Long questionId)
-    {
+            @PathVariable @ApiParam(value = "질문 아이디", required = true) Long questionId
+    ){
         try {
             List<Option> options = optionService.findAllOption(questionId);
             return ResponseEntity.status(201).body(OptionInfoRes.of(options));
@@ -85,8 +85,8 @@ public class OptionController {
     })
     public ResponseEntity<?> read(
             @PathVariable @ApiParam(value = "질문 아이디", required = true) Long questionId,
-            @PathVariable @ApiParam(value = "옵션 아이디", required = true) Long optionId)
-    {
+            @PathVariable @ApiParam(value = "옵션 아이디", required = true) Long optionId
+    ){
         try {
             Option option = optionService.findOption(questionId, optionId);
             return ResponseEntity.status(201).body(OptionInfoRes.of(option));
@@ -102,8 +102,8 @@ public class OptionController {
             @ApiResponse(code = 401, message = "실패", response = BaseResponseBody.class)
     })
     public ResponseEntity<? extends BaseResponseBody> delete(
-            @PathVariable @ApiParam(value = "옵션 아이디", required = true) Long optionId)
-    {
+            @PathVariable @ApiParam(value = "옵션 아이디", required = true) Long optionId
+    ){
         try {
             optionService.deleteOption(optionId);
             return ResponseEntity.status(201).body(BaseResponseBody.of(201, "Success"));

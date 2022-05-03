@@ -1,7 +1,10 @@
 package com.hamlet.api.controller;
 
+import com.hamlet.common.auth.HamletUserDetails;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,15 +18,16 @@ import com.hamlet.api.response.BaseResponseBody;
 import com.hamlet.api.response.UserRes;
 import com.hamlet.api.service.UserService;
 import com.hamlet.db.entity.User;
+import springfox.documentation.annotations.ApiIgnore;
 
 @Api(value = "유저 API", tags = {"User"})
 @RestController
 @RequestMapping("/users")
 public class UserController {
-	
+
 	@Autowired
 	UserService userService;
-	
+
 	@PostMapping()
 	@ApiOperation(value = "회원 가입", notes = "얻어온 정보로 회원 가입을 진행한다.")
 	@ApiResponses({
@@ -45,10 +49,16 @@ public class UserController {
 			@ApiResponse(code = 201, message = "성공", response = BaseResponseBody.class),
 			@ApiResponse(code = 401, message = "실패", response = BaseResponseBody.class)
 	})
-	public ResponseEntity<? extends BaseResponseBody> modify(@RequestBody UserReq registerInfo /*Authentication authentication*/) {
+	public ResponseEntity<? extends BaseResponseBody> modify(
+			@RequestBody @ApiParam(value="수정 정보", required = true) UserReq registerInfo,
+			@ApiIgnore Authentication authentication
+	){
+		HamletUserDetails userDetails = (HamletUserDetails)authentication.getDetails();
+		String email = userDetails.getUsername();
+		User user = userService.getUserInfo(email);
+
 		try {
-			Long userId = 0l;
-			userService.modifyUser(userId, registerInfo);
+			userService.modifyUser(user.getId(), registerInfo);
 			return ResponseEntity.status(201).body(BaseResponseBody.of(201, "Success"));
 		} catch (Exception e) {
 			return ResponseEntity.status(403).body(BaseResponseBody.of(401, "fail"));
@@ -61,10 +71,12 @@ public class UserController {
 			@ApiResponse(code = 201, message = "성공", response = BaseResponseBody.class),
 			@ApiResponse(code = 401, message = "실패", response = BaseResponseBody.class)
 	})
-	public ResponseEntity<UserRes> getUserInfo(/*Authentication authentication*/) {
-		// Authentication에서 userId 얻어오는 부분 구현필요.
-		Long userId = 0l;
-		User user = userService.getUserInfo(userId);
+	public ResponseEntity<UserRes> getUserInfo(
+			@ApiIgnore Authentication authentication
+	){
+		HamletUserDetails userDetails = (HamletUserDetails)authentication.getDetails();
+		String email = userDetails.getUsername();
+		User user = userService.getUserInfo(email);
 		
 		return ResponseEntity.status(200).body(UserRes.of(user));
 	}
@@ -75,11 +87,15 @@ public class UserController {
 			@ApiResponse(code = 201, message = "성공", response = BaseResponseBody.class),
 			@ApiResponse(code = 401, message = "실패", response = BaseResponseBody.class)
 	})
-	public ResponseEntity<? extends BaseResponseBody> delete(/*Authentication authentication*/) {
+	public ResponseEntity<? extends BaseResponseBody> delete(
+			@ApiIgnore Authentication authentication
+	){
+		HamletUserDetails userDetails = (HamletUserDetails)authentication.getDetails();
+		String email = userDetails.getUsername();
+		User user = userService.getUserInfo(email);
+
 		try {
-			// Authentication에서 userId 얻어오는 부분 구현필요.
-			Long userId = 0l;
-			userService.deleteUser(userId);
+			userService.deleteUser(user.getId());
 			return ResponseEntity.status(201).body(BaseResponseBody.of(201, "Success"));
 		} catch (Exception e) {
 			return ResponseEntity.status(403).body(BaseResponseBody.of(401, "fail"));

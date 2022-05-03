@@ -27,4 +27,7 @@ public class QuestionPutReq {
 
     @ApiModelProperty(name = "질문 내용", example = "1 + 1 = ?")
     String contents;
+
+    public static class UserLoginReq {
+    }
 }

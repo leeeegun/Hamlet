@@ -11,7 +11,8 @@ import com.hamlet.db.entity.Hamlet;
 @Repository
 public interface HamletRepository extends JpaRepository<Hamlet, Long> {
 	
-	@Query(value = "select * from hamlets where id = ?1", nativeQuery = true)
-	public List<Hamlet> findHamletById();
+	//@Query(value = "select * from hamlets where id = ?1", nativeQuery = true)
+	//public List<Hamlet> findHamletById();
 
+	List<Hamlet> findAllByUserId(Long userId);
 }

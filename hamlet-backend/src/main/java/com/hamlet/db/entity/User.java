@@ -1,6 +1,7 @@
 package com.hamlet.db.entity;
 
-import lombok.Generated;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.hamlet.api.request.UserReq;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Table(name = "users")
 @NoArgsConstructor
 public class User {
 
@@ -23,7 +25,9 @@ public class User {
     String nickname;
     String email;
     String password;
-    LocalDateTime create_at;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
+    LocalDateTime created_at;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     List<Hamlet> hamlets = new ArrayList<>();
@@ -39,5 +43,6 @@ public class User {
         this.nickname = u.getNickname();
         this.email = u.getEmail();
         this.password = u.getPassword();
+        this.created_at = LocalDateTime.now();
     }
 }

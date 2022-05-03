@@ -1,5 +1,6 @@
 package com.hamlet.api.controller;
 
+import com.hamlet.api.request.QuestionOrdersReq;
 import com.hamlet.api.request.QuestionPostReq;
 import com.hamlet.api.request.QuestionPutReq;
 import com.hamlet.api.response.BaseResponseBody;
@@ -50,6 +51,23 @@ public class QuestionController {
     {
         try {
             questionService.modifyQuestion(questionId, questionPutReq);
+            return ResponseEntity.status(201).body(BaseResponseBody.of(201, "Success"));
+        } catch (Exception e) {
+            return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Error"));
+        }
+    }
+
+    @PutMapping()
+    @ApiOperation(value = "질문 순서 수정", notes = "원하는 질문 순서를 수정한다.")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "성공", response = BaseResponseBody.class),
+            @ApiResponse(code = 401, message = "실패", response = BaseResponseBody.class)
+    })
+    public ResponseEntity<? extends BaseResponseBody> orders(
+            @RequestBody @ApiParam(value = "질문 수정 정보", required = true) QuestionOrdersReq questionOrdersReq)
+    {
+        try {
+            questionService.modifyOrders(questionOrdersReq);
             return ResponseEntity.status(201).body(BaseResponseBody.of(201, "Success"));
         } catch (Exception e) {
             return ResponseEntity.status(401).body(BaseResponseBody.of(401, "Error"));

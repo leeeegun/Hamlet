@@ -1,5 +1,6 @@
 package com.hamlet.api.service;
 
+import com.hamlet.api.request.QuestionOrdersReq;
 import com.hamlet.api.request.QuestionPostReq;
 import com.hamlet.api.request.QuestionPutReq;
 import com.hamlet.db.entity.Question;
@@ -14,5 +15,5 @@ public interface QuestionService {
     List<Question> findAllQuestion(Long hamletId);
     Question findQuestion(Long hamletId, Long questionId);
     void deleteQuestion(Long questionId);
-
+    void modifyOrders(QuestionOrdersReq questionOrdersReq);
 }

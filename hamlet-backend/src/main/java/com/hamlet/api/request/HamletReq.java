@@ -1,5 +1,7 @@
 package com.hamlet.api.request;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,9 +11,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @ApiModel("HamletRequest")
 public class HamletReq {
-
-	@ApiModelProperty(name = "유저 아이디", example = "1")
-	Long userId;
 
 	@ApiModelProperty(name = "햄릿 제목", example = "서울 2반")
 	String title;

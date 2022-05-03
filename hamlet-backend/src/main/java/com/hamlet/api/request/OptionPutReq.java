@@ -10,9 +10,6 @@ import lombok.Setter;
 @ApiModel("OptionPutRequest")
 public class OptionPutReq {
 
-    @ApiModelProperty(name = "질문 아이디", example = "1")
-    Long questionId;
-
     @ApiModelProperty(name = "선택지 내용", example = "짬뽕")
     String contents;
 

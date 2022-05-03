@@ -13,7 +13,16 @@ import java.util.List;
 @Getter
 @Setter
 @ApiModel("QuestionInformationResponse")
-public class QuestionInfoRes extends BaseResponseBody {
+public class QuestionInfoRes {
+    public QuestionInfoRes(Question question) {
+        this.questionId = question.getId();
+        this.kinds = question.getKinds();
+        this.point = question.getPoints();
+        this.time = question.getTime();
+        this.orders = question.getOrders();
+        this.multiple = question.getMultiple();
+        this.contents = question.getContents();
+    }
 
     @ApiModelProperty(name = "질문 아이디", example = "1")
     Long questionId;
@@ -28,7 +37,7 @@ public class QuestionInfoRes extends BaseResponseBody {
     Integer time;
 
     @ApiModelProperty(name = "질문 순서", example = "1")
-    Integer orders;
+    Long orders;
 
     @ApiModelProperty(name = "다중 정답 유무", example = "true")
     Boolean multiple;
@@ -40,21 +49,11 @@ public class QuestionInfoRes extends BaseResponseBody {
     private List<OptionInfoRes> options = new ArrayList<>();
 
     public static QuestionInfoRes of(Question question) {
-        QuestionInfoRes questionRes = new QuestionInfoRes();
+        QuestionInfoRes questionRes = new QuestionInfoRes(question);
 
-        questionRes.setQuestionId(question.getId());
-        questionRes.setKinds(question.getKinds());
-        questionRes.setPoint(question.getPoints());
-        questionRes.setTime(question.getTime());
-        questionRes.setOrders(question.getOrders());
-        questionRes.setMultiple(question.getMultiple());
-        questionRes.setContents(question.getContents());
-
-        OptionInfoRes optionRes = new OptionInfoRes();
         for(Option option : question.getOptions()) {
-            optionRes.setOptionId(option.getId());
-            optionRes.setContents(option.getContents());
-            optionRes.setAnswer(option.getAnswer());
+            OptionInfoRes optionRes = new OptionInfoRes(option);
+
             questionRes.options.add(optionRes);
         }
 
@@ -64,10 +63,8 @@ public class QuestionInfoRes extends BaseResponseBody {
     public static List<QuestionInfoRes> of(List<Question> questions) {
         List<QuestionInfoRes> questionListRes = new ArrayList<>();
 
-        QuestionInfoRes questionRes = new QuestionInfoRes();
         for(Question question : questions) {
-            questionRes.of(question);
-            questionListRes.add(questionRes);
+            questionListRes.add(QuestionInfoRes.of(question));
         }
 
         return questionListRes;
