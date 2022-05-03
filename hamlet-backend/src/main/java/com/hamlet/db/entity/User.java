@@ -34,4 +34,10 @@ public class User {
     	    hamlet.setUser(this);
     	}
     }
+
+    public User(UserReq u) {
+        this.nickname = u.getNickname();
+        this.email = u.getEmail();
+        this.password = u.getPassword();
+    }
 }

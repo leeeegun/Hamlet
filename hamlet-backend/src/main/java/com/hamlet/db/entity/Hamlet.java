@@ -43,4 +43,9 @@ public class Hamlet {
             question.setHamlet(this);
         }
     }
+
+    public Hamlet(User user, String title) {
+        this.user = user;
+        this.title = title;
+    }
 }
