@@ -29,39 +29,55 @@ public class HamletController {
 	
 	@PostMapping()
 	@ApiOperation(value = "햄릿 생성", notes = "햄릿을 생성한다.")
+	@ApiResponses({
+			@ApiResponse(code = 201, message = "성공", response = BaseResponseBody.class),
+			@ApiResponse(code = 401, message = "실패", response = BaseResponseBody.class)
+	})
 	public ResponseEntity<? extends BaseResponseBody> create(@ApiParam(value = "햄릿 생성 정보", required = true) @RequestBody HamletReq hamletCreateInfo) {
 		try {
 			hamletService.createHamlet(hamletCreateInfo);
 			return ResponseEntity.status(201).body(BaseResponseBody.of(201, "Success"));
 		} catch (Exception e) {
-			return ResponseEntity.status(403).body(BaseResponseBody.of(403, "fail"));
+			return ResponseEntity.status(401).body(BaseResponseBody.of(401, "fail"));
 		}
 	}
 	
 	@PutMapping("/{hamletId}")
 	@ApiOperation(value = "햄릿 수정", notes = "해당 햄릿의 이름을 수정한다.")
+	@ApiResponses({
+			@ApiResponse(code = 201, message = "성공", response = BaseResponseBody.class),
+			@ApiResponse(code = 401, message = "실패", response = BaseResponseBody.class)
+	})
 	public ResponseEntity<? extends BaseResponseBody> modify(@ApiParam(value = "수정할 햄릿 ID", required = true) @PathVariable(name = "hamletId") Long hamletId, @ApiParam(value = "수정할 햄릿 정보", required = true) @RequestBody String title) {
 		try {
 			hamletService.modifyHamlet(hamletId, title);
 			return ResponseEntity.status(201).body(BaseResponseBody.of(201, "Success"));
 		} catch (Exception e) {
-			return ResponseEntity.status(403).body(BaseResponseBody.of(403, "fail"));
+			return ResponseEntity.status(401).body(BaseResponseBody.of(401, "fail"));
 		}
 	}
 	
 	@DeleteMapping("/{hamletId}")
 	@ApiOperation(value = "햄릿 삭제", notes = "해당 햄릿을 삭제한다.")
+	@ApiResponses({
+			@ApiResponse(code = 201, message = "성공", response = BaseResponseBody.class),
+			@ApiResponse(code = 401, message = "실패", response = BaseResponseBody.class)
+	})
 	public ResponseEntity<? extends BaseResponseBody> delete(@ApiParam(value = "삭제할 햄릿 ID", required = true) @PathVariable(name = "hamletId") Long hamletId) {
 		try {
 			hamletService.deleteHamlet(hamletId);
 			return ResponseEntity.status(201).body(BaseResponseBody.of(201, "Success"));
 		} catch (Exception e) {
-			return ResponseEntity.status(403).body(BaseResponseBody.of(403, "fail"));
+			return ResponseEntity.status(401).body(BaseResponseBody.of(401, "fail"));
 		}
 	}
 	
 	@GetMapping()
 	@ApiOperation(value = "햄릿 목록 불러오기", notes = "해당 유저의 햄릿 목록을 불러온다.")
+	@ApiResponses({
+			@ApiResponse(code = 201, message = "성공", response = BaseResponseBody.class),
+			@ApiResponse(code = 401, message = "실패", response = BaseResponseBody.class)
+	})
 	public ResponseEntity<?> getHamletList(/*Authentication authentication*/) {
 		try {
 			// Authentication에서 userId 얻어오는 부분 구현필요.
@@ -70,7 +86,7 @@ public class HamletController {
 			
 			return ResponseEntity.status(201).body(HamletRes.of(hamlets));
 		} catch (Exception e) {
-			return ResponseEntity.status(403).body(BaseResponseBody.of(403, "fail"));
+			return ResponseEntity.status(401).body(BaseResponseBody.of(401, "fail"));
 		}
 	}
 }

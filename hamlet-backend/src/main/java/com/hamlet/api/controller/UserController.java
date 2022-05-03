@@ -26,29 +26,41 @@ public class UserController {
 	
 	@PostMapping()
 	@ApiOperation(value = "회원 가입", notes = "얻어온 정보로 회원 가입을 진행한다.")
+	@ApiResponses({
+			@ApiResponse(code = 201, message = "성공", response = BaseResponseBody.class),
+			@ApiResponse(code = 401, message = "실패", response = BaseResponseBody.class)
+	})
 	public ResponseEntity<? extends BaseResponseBody> register(@RequestBody UserReq registerInfo) {
 		try {
 			userService.registUser(registerInfo);
 			return ResponseEntity.status(201).body(BaseResponseBody.of(201, "Success"));
 		} catch (Exception e) {
-			return ResponseEntity.status(403).body(BaseResponseBody.of(403, "fail"));
+			return ResponseEntity.status(403).body(BaseResponseBody.of(401, "fail"));
 		}
 	}
 	
 	@PutMapping()
 	@ApiOperation(value = "회원 수정", notes = "해당 유저의 회원 정보를 수정한다.")
+	@ApiResponses({
+			@ApiResponse(code = 201, message = "성공", response = BaseResponseBody.class),
+			@ApiResponse(code = 401, message = "실패", response = BaseResponseBody.class)
+	})
 	public ResponseEntity<? extends BaseResponseBody> modify(@RequestBody UserReq registerInfo /*Authentication authentication*/) {
 		try {
 			Long userId = 0l;
 			userService.modifyUser(userId, registerInfo);
 			return ResponseEntity.status(201).body(BaseResponseBody.of(201, "Success"));
 		} catch (Exception e) {
-			return ResponseEntity.status(403).body(BaseResponseBody.of(403, "fail"));
+			return ResponseEntity.status(403).body(BaseResponseBody.of(401, "fail"));
 		}
 	}
 	
 	@GetMapping()
 	@ApiOperation(value = "회원 정보 불러오기", notes = "해당 회원의 정보를 불러온다.")
+	@ApiResponses({
+			@ApiResponse(code = 201, message = "성공", response = BaseResponseBody.class),
+			@ApiResponse(code = 401, message = "실패", response = BaseResponseBody.class)
+	})
 	public ResponseEntity<UserRes> getUserInfo(/*Authentication authentication*/) {
 		// Authentication에서 userId 얻어오는 부분 구현필요.
 		Long userId = 0l;
@@ -59,6 +71,10 @@ public class UserController {
 	
 	@DeleteMapping()
 	@ApiOperation(value = "회원 탈퇴", notes = "해당 회원을 삭제한다.")
+	@ApiResponses({
+			@ApiResponse(code = 201, message = "성공", response = BaseResponseBody.class),
+			@ApiResponse(code = 401, message = "실패", response = BaseResponseBody.class)
+	})
 	public ResponseEntity<? extends BaseResponseBody> delete(/*Authentication authentication*/) {
 		try {
 			// Authentication에서 userId 얻어오는 부분 구현필요.
@@ -66,7 +82,7 @@ public class UserController {
 			userService.deleteUser(userId);
 			return ResponseEntity.status(201).body(BaseResponseBody.of(201, "Success"));
 		} catch (Exception e) {
-			return ResponseEntity.status(403).body(BaseResponseBody.of(403, "fail"));
+			return ResponseEntity.status(403).body(BaseResponseBody.of(401, "fail"));
 		}
 	}
 }
