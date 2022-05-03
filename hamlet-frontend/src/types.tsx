@@ -1,16 +1,10 @@
-
-// enum QuestionType {
-//     quiz = "quiz",
-//     poll = "poll",
-//     subjective = "subjective",
-//     survey = "survey",
-// }
-
 type QuestionType = "quiz" | "poll" | "subjective" | "survey"
 
 interface question {
     q: string;
     type: QuestionType;
+    time: number;
+    point?: number;
     choices?: string[];
 }
 
