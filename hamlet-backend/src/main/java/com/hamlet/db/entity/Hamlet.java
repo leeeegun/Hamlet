@@ -40,7 +40,7 @@ public class Hamlet {
 
     @OneToMany(mappedBy = "hamlet", cascade = CascadeType.ALL)
     List<Question> questions = new ArrayList<>();
-    
+
     public void setUser(User user) {
     	this.user = user;
     	if(!user.getHamlets().contains(this)) {

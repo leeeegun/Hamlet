@@ -29,26 +29,26 @@ public class Question {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "hamlet_id")
 	Hamlet hamlet;
-	
+
 	Integer kinds;
-	
+
 	Integer points;
-	
+
 	Integer time;
 	
 	Long orders;
-	
+
 	Boolean multiple;
-	
+
 	String contents;
-	
+
 	@OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
     private List<Option> options = new ArrayList<>();
-	
+
 	public void setHamlet(Hamlet hamlet) {
 		this.hamlet = hamlet;
 		if(!hamlet.getQuestions().contains(this)) {

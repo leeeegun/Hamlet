@@ -19,7 +19,6 @@ import lombok.Setter;
 @Table(name = "options")
 @NoArgsConstructor
 public class Option {
-
 	public Option(Question question, OptionPostReq option) {
 		this.setQuestion(question);
 		this.contents = option.getContents();
@@ -29,20 +28,19 @@ public class Option {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "question_id")
 	Question question;
-	
+
 	String contents;
-	
+
 	Boolean answer;
-	
+
 	public void setQuestion(Question question) {
 		this.question = question;
 		if(!question.getOptions().contains(this)) {
 			question.setOptions(this);
 		}
 	}
-
 }

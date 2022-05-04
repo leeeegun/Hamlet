@@ -58,8 +58,12 @@ public class QuestionServiceImpl implements QuestionService {
         Question modifyQuestion = questionRepository.findById(questionOrdersReq.getQuestionId()).get();
 
         for(Question question : questions) {
-            if(question.getOrders() <= modifyQuestion.getOrders()) {
+            if(question.getOrders() == modifyQuestion.getOrders()){
+                continue;
+            }else if(question.getOrders() < modifyQuestion.getOrders()) {
                 question.setOrders(question.getOrders()+1L);
+            }else {
+                question.setOrders(question.getOrders()-1L);
             }
             questionRepository.save(question);
         }
@@ -70,16 +74,12 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public List<Question> findAllQuestion(Long hamletId) {
-        List<Question> questions = questionRepository.findAllByHamletId(hamletId);
-
-        return questions;
+        return questionRepository.findAllByHamletId(hamletId);
     }
 
     @Override
     public Question findQuestion(Long hamletId, Long questionId) {
-        Question question = questionRepository.findById(questionId).get();
-
-        return question;
+        return questionRepository.findById(questionId).get();
     }
 
     @Override
