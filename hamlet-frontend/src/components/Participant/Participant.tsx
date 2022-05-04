@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import { StyledDiv } from './styles';
 
@@ -19,6 +18,3 @@ function Participant() {
 }
 
 export default Participant;
-=======
-export {}
->>>>>>> 05c0232451d7cab136ca4ffbb73b49a03cffff15

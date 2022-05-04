@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-export{}
-=======
 import { QuestionType, question } from '../../types';
 import styled from 'styled-components';
 import { colors } from '../../styles/style';
@@ -128,4 +125,3 @@ const Question = ({item, onClick, onEditQuestion}: QuestionProps) => {
 }
 
 export default Question;
->>>>>>> 05c0232451d7cab136ca4ffbb73b49a03cffff15

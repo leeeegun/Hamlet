@@ -1,5 +1,14 @@
-<<<<<<< HEAD
-export{}
-=======
-export {}
->>>>>>> 05c0232451d7cab136ca4ffbb73b49a03cffff15
+import React from 'react';
+import { StyledDiv } from './styles';
+import { question } from '../../../types';
+
+function Survey( survey : question) {
+  const { q, type, time} = survey; // 설문
+  return(
+    <StyledDiv>
+      <label>{q}</label>
+    </StyledDiv>
+  );
+}
+
+export default Survey;

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import logo from '../../images/logo.png';
 import { StyledLogo, StyledApp, StyledRoom } from './styles';
@@ -21,6 +20,3 @@ function WaitingRoomPlayer() {
 }
 
 export default WaitingRoomPlayer;
-=======
-export {}
->>>>>>> 05c0232451d7cab136ca4ffbb73b49a03cffff15

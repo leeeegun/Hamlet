@@ -1,5 +1,15 @@
-<<<<<<< HEAD
-export{}
-=======
-export {}
->>>>>>> 05c0232451d7cab136ca4ffbb73b49a03cffff15
+import React from 'react';
+import { StyledDiv } from './styles';
+import { question } from '../../../types';
+
+function Subjective( subjective : question) {
+  const { q, type, time, point} = subjective; // 주관식
+  return(
+    <StyledDiv>
+      <label>{q}</label>
+      
+    </StyledDiv>
+  );
+}
+
+export default Subjective;

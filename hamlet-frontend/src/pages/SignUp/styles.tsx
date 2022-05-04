@@ -13,6 +13,7 @@ const StyledSignup = styled.div`
 
 const StyledForm = styled.form`
   min-height: 30vh;
+  min-width: 30ch;
   background-color: #F2E9DF;
   font-size: calc(10px + 2vmin);
   border-radius: 10px;
@@ -20,7 +21,7 @@ const StyledForm = styled.form`
 `;
 
 const Styledfieldset = styled.fieldset`
-  height: 5vmin;
+  height: 6vmin;
   display: flex;
   flex-direction: column;
   background-color: #4F3F28;
@@ -47,7 +48,7 @@ const StyledSubmit = styled.input`
 `;
 
 const StyledLogo = styled.img`
-  height: 6vmin;
+  height: 8vmin;
   pointer-events: none;
 `;
 

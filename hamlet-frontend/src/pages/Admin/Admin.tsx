@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-export{}
-=======
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { colors } from '../../styles/style';
@@ -8,6 +5,7 @@ import Question from '../../components/Question/Question';
 import { QuestionType, question, hamlet } from '../../types';
 import { BsPlusLg } from "react-icons/bs";
 import { VscChromeClose } from "react-icons/vsc";
+import Game from '../Game/Game';
 
 type ItemProps = {
     item: hamlet
@@ -181,11 +179,11 @@ const AddBtn = styled.div`
 
 const Admin = () => {
 
-
     const [selectedLabelIdx, setSelectedLabelIdx] = useState<number>(0);
     const [myHamlets, setMyHamlets] = useState<hamlet[]>([]);
     const [myQuestions, setMyQuestions] = useState<question[]>([]);
     const [closedHamlets, setClosedHamlets] = useState<hamlet[]>([]);
+    const [modalOpen, setModalOpen] = useState<boolean>(false);
 
     useEffect(() => {
         const myham: hamlet[] = [
@@ -283,10 +281,31 @@ const Admin = () => {
 
 
     
-    const onClick = () => {
-
+    const onClick = ({id, title, code,date } : hamlet) => {
+        setModalOpen(!modalOpen); // 이 햄릿안에 들어있는 질문을 가져와야함
+        <div>
+            { modalOpen ? (
+                <section>
+                    <header>
+                        {title}
+                        <button className="close" onClick={() => setModalOpen(!modalOpen)}>
+                            &times;
+                        </button>
+                    </header>
+                    <main>없어</main>
+                    <footer>
+                        <button className="close" onClick={onClick2}>
+                            시작하기
+                        </button>
+                    </footer>
+            </section>
+            ) : null}
+        </div>
     }
 
+    const onClick2 = () => {
+
+    }
     const onEditQuestion = () => {
         
     }
@@ -312,7 +331,7 @@ const Admin = () => {
                             <Item 
                                 key={`myHamlets-${idx}`}
                                 item={item}
-                                onClick={onClick}
+                                onClick={() => onClick(item)}
                                 isClosed={false} 
                             />
                         ))
@@ -324,7 +343,7 @@ const Admin = () => {
                             <Question 
                                 key={`myQuestions-${idx}`}
                                 item={item}
-                                onClick={onClick} 
+                                onClick={onClick2} 
                                 onEditQuestion={onEditQuestion}
                             />
                         ))
@@ -336,7 +355,7 @@ const Admin = () => {
                             <Item 
                                 key={`closedHamlets-${idx}`}
                                 item={item}
-                                onClick={onClick}
+                                onClick={() => onClick(item)}
                                 isClosed={true} 
                             />
                         ))
@@ -368,4 +387,3 @@ const Admin = () => {
 }
 
 export default Admin;
->>>>>>> 05c0232451d7cab136ca4ffbb73b49a03cffff15

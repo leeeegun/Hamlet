@@ -20,7 +20,7 @@ const StyledForm = styled.form`
 `;
 
 const Styledfieldset = styled.fieldset`
-  height: 4vmin;
+  height: 5vmin;
   display: flex;
   flex-direction: column;
   background-color: #4F3F28;
@@ -56,7 +56,7 @@ const StyledButton = styled.button`
 `;
 
 const StyledLogo = styled.img`
-  height: 5vmin;
+  height: 7vmin;
   pointer-events: none;
 `;
 

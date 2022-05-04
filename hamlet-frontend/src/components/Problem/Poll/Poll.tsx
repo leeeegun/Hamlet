@@ -1,5 +1,20 @@
-<<<<<<< HEAD
-export{}
-=======
-export {}
->>>>>>> 05c0232451d7cab136ca4ffbb73b49a03cffff15
+import React from 'react';
+import { StyledDiv}  from './styles';
+import { question } from '../../../types';
+
+function Poll( poll : question) {
+  const { q, type, time, choices} = poll;
+  return(
+    <StyledDiv>
+      <label>{q}</label>
+      {
+        // choices.map((item, idx) => (
+        //   <div>{item}</div>
+        // ))
+      }
+      
+    </StyledDiv>
+  );
+}
+
+export default Poll;
