@@ -47,9 +47,6 @@ public class LogQuestion {
     String contents;
 
     @OneToMany(mappedBy = "logQuestion", cascade = CascadeType.ALL)
-    private List<Answer> answers = new ArrayList<>();
-
-    @OneToMany(mappedBy = "logQuestion", cascade = CascadeType.ALL)
     private List<LogOption> logOptions = new ArrayList<>();
 
     public void setGame(Game game) {
@@ -63,13 +60,6 @@ public class LogQuestion {
         this.logOptions.add(logOption);
         if(logOption.getLogQuestion() != this) {
             logOption.setLogQuestion(this);
-        }
-    }
-
-    public void setAnswers(Answer answer) {
-        this.answers.add(answer);
-        if(answer.getLogQuestion() != this) {
-            answer.setLogQuestion(this);
         }
     }
 }

@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LogOptionRepository extends JpaRepository<LogOption, Long> {
-    LogOption findByLogOptionId(Long logOptionId);
 }

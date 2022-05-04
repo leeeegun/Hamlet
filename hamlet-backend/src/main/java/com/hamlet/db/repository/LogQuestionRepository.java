@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LogQuestionRepository extends JpaRepository<LogQuestion, Long> {
-    LogQuestion findByLogQuestionId(Long logQuestionId);
 }

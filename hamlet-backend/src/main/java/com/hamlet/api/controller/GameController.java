@@ -52,7 +52,7 @@ public class GameController {
             @ApiResponse(code = 401, message = "실패", response = BaseResponseBody.class)
     })
     public ResponseEntity<? extends BaseResponseBody> end(
-            @ApiParam(value = "수정할 게임 ID", required = true) @PathVariable(name = "hamletId") Long gameId
+            @ApiParam(value = "수정할 게임 ID", required = true) @PathVariable(name = "gameId") Long gameId
     ){
         try {
             gameService.endGame(gameId);
