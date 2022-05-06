@@ -29,7 +29,7 @@ const Game = ()  => { // myQs : question[]
     <StyledApp>
       <StyledRoom>
         <StyledLogo src={logo} alt="logo" />
-        <Quiz/>
+        <Survey />
       </StyledRoom>
     </StyledApp>
   );

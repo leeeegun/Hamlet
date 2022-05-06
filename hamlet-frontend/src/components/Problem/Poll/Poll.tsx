@@ -1,18 +1,30 @@
 import React from 'react';
-import { StyledDiv}  from './styles';
 import { question } from '../../../types';
+import styled from "styled-components";
 
-function Poll( poll : question) {
-  const { q, type, time, choices} = poll;
+const StyledDiv = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  justify-content: flex-start;
+  background-color: #FFB762;
+  width: 80%;
+  min-height: 60vh;
+  margin-top : 2em;
+  border-radius: 10px;
+`;
+
+const  Styledtitle = styled.label`
+  margin : 2em 0 5em 0;
+`;
+
+function Poll( ) { // poll : question
+  // const { q, type, time, choices} = poll;
   return(
     <StyledDiv>
-      <label>{q}</label>
-      {
-        // choices.map((item, idx) => (
-        //   <div>{item}</div>
-        // ))
-      }
-      
+      <Styledtitle>hi</Styledtitle>
+      <input value="input" />
     </StyledDiv>
   );
 }
