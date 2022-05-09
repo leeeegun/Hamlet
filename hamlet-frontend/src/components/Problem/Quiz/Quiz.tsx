@@ -41,27 +41,11 @@ const Quiz = () => { // quiz : question
   color: ${props => props.selected? "white" : "black" };
 `;
 
-const StyledOption2 = styled.button<{ selected: boolean }>`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${props => props.selected? colors.bgDark : colors.pointSub2 };
-  margin: 0 0 1em 0;
-  width: 40%;
-  height: 6vh;
-  border-radius: 5px;
-  font: 0.7em bold;
-  color: ${props => props.selected? "black" : "white" };
-`;
-
-
-
-
   return(
     <StyledDiv>
       <Styledtitle>hi</Styledtitle>
-      <StyledOption selected={isSelected} onClick={(): void=> {setSelected(!isSelected);}}>여기</StyledOption>
-      <StyledOption2 selected={isSelected} onClick={(): void=> {setSelected(!isSelected)}}>여기2</StyledOption2>
+      <StyledOption selected={isSelected} onClick={(): void=> {if(!isSelected){setSelected(!isSelected); setSelected2(isSelected);}}}>여기</StyledOption>
+      <StyledOption selected={isSelected2} onClick={(): void=> {if(!isSelected2){setSelected(isSelected2); setSelected2(!isSelected2)}}}>여기2</StyledOption>
     </StyledDiv>
   );
 }

@@ -30,7 +30,7 @@ const StyledOption = styled.button<{ selected: boolean }>`
   `;
 
 const  Styledtitle = styled.label`
-  margin : 2em 0 5em 0;
+  margin : 2em 0 3em 0;
 `;
 
 function Survey() { // survey : question

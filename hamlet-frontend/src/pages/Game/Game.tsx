@@ -8,8 +8,9 @@ import Problem from '../../components/Problem/Problem';
 import Poll from '../../components/Problem/Poll/Poll';
 import Survey from '../../components/Problem/Survey/Survey';
 import Subjective from '../../components/Problem/Subjective/Subjective';
-
-
+import SubjectiveResult from '../../components/Problem/SubjectiveResult/SubjectiveResult';
+import PollResult from '../../components/Problem/PollResult/PollResult';
+import SurveyResult from '../../components/Problem/SurveyResult/SurveyResult';
 
 const Game = ()  => { // myQs : question[]
   // const test  = () => {
@@ -29,7 +30,8 @@ const Game = ()  => { // myQs : question[]
     <StyledApp>
       <StyledRoom>
         <StyledLogo src={logo} alt="logo" />
-        <Survey />
+        <Timer ss={'30'} />
+        <SurveyResult />
       </StyledRoom>
     </StyledApp>
   );

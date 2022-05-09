@@ -19,13 +19,23 @@ const  Styledtitle = styled.label`
   margin : 2em 0 5em 0;
 `;
 
+const StyledInput = styled.input`
+  background-color: colors.pointSub2;
+  margin: 0 0 1em 0;
+  width: 40%;
+  height: 5vh;
+  border-radius: 5px;
+  font: 0.9em bold;
+  color: black
+`;
 
+// <StyledInput value="input" />
 function Subjective() { //  subjective : question
   // const { q, type, time, point} = subjective; // 주관식
   return(
     <StyledDiv>
       <Styledtitle>hi</Styledtitle>
-      <input value="input" />
+      <StyledInput />
     </StyledDiv>
   );
 }
