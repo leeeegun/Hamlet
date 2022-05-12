@@ -1,7 +1,5 @@
-import React from 'react';
-import { question } from '../../../types';
 import styled from "styled-components";
-import { colors } from '../../../styles/style';
+import { colors } from "../../../styles/style";
 
 const StyledDiv = styled.div`
   display: flex;
@@ -35,7 +33,7 @@ const StyledScore = styled.div`
   display: flex;
   flex-direction: column;
   justify-content:center;
-  align-content:center;
+  align-items:center;
   background-color: ${ colors.pointSub1 };
   min-width: 9vh;
   max-width: 9vh;
@@ -54,6 +52,13 @@ const StyleDiv2 = styled.div`
   width: 90%;  
 `;
 
+const StyledResult = styled.span`
+  color: green;
+  font-weight: bold;
+  font-size: 4em;
+  margin: 0 0 1em 0;
+`
+
 const StyledDiv3 = styled.div`
   display: flex;
   flex-direction: column;
@@ -68,7 +73,7 @@ const AdminButton = styled.button`
   align-items: center;
   background-color: ${colors.pointSub2};
   margin: 0 0 1em 0;
-  width: 40%; 
+  width: 40%;
   height: 2.5em;
   border-radius: 10px;
   font: 0.7em bold;
@@ -76,29 +81,12 @@ const AdminButton = styled.button`
   font-weight: bold;
 `
 
-const SubjectiveAdmin = () => { // poll : question
-  // const { q, type, time, choices} = poll;
-  return(
-    <>
-    <StyledDiv>
-      <StyleDiv2>
-        <StyledScore>20</StyledScore>
-        <Styledtitle>주관식주관식주관식주관식주관식주관식주관식주관식주관식주관식주관식주관식주관식주관식주관식주관식주관식주관식주관식주관식
-        주관식주관식주관식주관식주관식
-        </Styledtitle>
-      </StyleDiv2>
-      <StyledInput placeholder='입력하세요'/>
-    </StyledDiv>
-    <StyledDiv3>
-      <AdminButton>
-        Skip
-      </AdminButton>
-      <AdminButton>
-        정답공개
-      </AdminButton>
-    </StyledDiv3>
-    </>
-  );
-}
+const StyledTimer = styled.div`
+  font-family: "Montserrat";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2em;
+`
 
-export default SubjectiveAdmin;
+export {StyleDiv2, StyledScore,StyledTimer, StyledInput, Styledtitle, StyledDiv, StyledResult, AdminButton, StyledDiv3};

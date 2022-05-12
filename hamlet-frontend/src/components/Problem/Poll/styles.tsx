@@ -1,7 +1,5 @@
-import React from 'react';
-import { question } from '../../../types';
 import styled from "styled-components";
-import { colors } from '../../../styles/style';
+import { colors } from "../../../styles/style";
 
 const StyledDiv = styled.div`
   display: flex;
@@ -76,29 +74,4 @@ const StyledDiv3 = styled.div`
   width: 60%;
 `;
 
-const PollAdmin = () => { // poll : question
-  // const { q, type, time, choices} = poll;
-  return(
-    <>
-      <StyledDiv>
-        <StyleDiv2>
-          <StyledScore>20</StyledScore>
-          <Styledtitle>투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표
-          투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표
-          </Styledtitle>
-        </StyleDiv2>
-        <StyledInput placeholder='입력하세요'/>
-      </StyledDiv>
-      <StyledDiv3>
-        <AdminButton>
-          Skip
-        </AdminButton>
-        <AdminButton>
-          정답공개
-        </AdminButton>
-      </StyledDiv3>
-    </>
-  );
-}
-
-export default PollAdmin;
+export { StyleDiv2, StyledScore, StyledInput, Styledtitle, StyledDiv, AdminButton, StyledDiv3};

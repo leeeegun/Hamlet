@@ -1,61 +1,8 @@
 import { question } from '../../../types';
-import styled from "styled-components";
 import { useState } from 'react'
-import { colors } from '../../../styles/style';
-
-const StyledDiv = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: ${ colors.bgMain };
-  width: 80%;
-  min-height: 60vh;
-  margin : 2em 0 1em 0;
-  border-radius: 10px;
-`;
-
-const StyledOption = styled.button<{ selected: boolean }>` 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: ${props => props.selected? colors.pointSub2 : colors.bgDark};
-    margin: 0 0 1em 0;
-    width: 40%;
-    height: 2.5em;
-    border-radius: 30px;
-    font: 0.7em bold;
-    color: black
-  `;
-
-const  Styledtitle = styled.label`
-  margin : 2.5em 0 5em 3em;
-  font-weight: bold;
-`;
-
-const StyledScore = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content:center;
-  align-content:center;
-  background-color: ${ colors.pointSub1 };
-  min-width: 9vh;
-  max-width: 9vh;
-  min-height: 9vh;
-  max-height: 9vh;
-  border-radius: 100%;
-  margin : 2em 0 5em 0;
-  color: white;
-  font-weight: bold;
-`;  
-
-const StyleDiv2 = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-content: center;
-  width: 90%;
-`;
+import Timer from '../../Timer/Timer';
+import { StyledDiv, StyledScore, Styledtitle, StyleDiv2, StyledOption, Styledp, Progress_span, Animate_progress } from './styles';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 const Survey = () => { // survey : question
   // const { q, type, time} = survey; // 설문
@@ -63,11 +10,46 @@ const Survey = () => { // survey : question
   const [ isSelected2, setSelected2] = useState<boolean>(false);
   const [ isSelected3, setSelected3] = useState<boolean>(false);
   const [ isSelected4, setSelected4] = useState<boolean>(false);
-
+  const [ isResult, setResult ] = useState<boolean>(false);
   //background-color: ${props => props.selected? colors.pointSub2 : colors.bgDark};
   // color: ${props => props.selected? "white" : "black" };
 
+  
   return(
+    <>
+    {isResult ? 
+    <StyledDiv>
+      <StyleDiv2>
+        <StyledScore>-</StyledScore>
+        <Styledtitle>현재 다니는 SSAFY캠퍼스는 어딘가요?</Styledtitle>
+      </StyleDiv2>
+      <Styledp>서울 캠퍼스 72%</Styledp>
+      <Animate_progress>
+        <Progress_span data_progress={72} wcolor={"blue"}></Progress_span>
+      </Animate_progress>
+      <Styledp>대전 캠퍼스 13%</Styledp>
+      <Animate_progress>
+        <Progress_span data_progress={13} wcolor={"red"}></Progress_span>
+      </Animate_progress>
+      <Styledp>부울경 캠퍼스 8%</Styledp>
+      <Animate_progress>
+        <Progress_span data_progress={8} wcolor={"purple"}></Progress_span>
+      </Animate_progress>
+      <Styledp>구미 캠퍼스 7%</Styledp>
+      <Animate_progress>
+        <Progress_span data_progress={7} wcolor={"green"}></Progress_span>
+      </Animate_progress>
+      <br/>
+    </StyledDiv>
+    :
+    <>
+    <CountdownCircleTimer
+        isPlaying
+        duration={10}
+        colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+        colorsTime={[10, 6, 3, 0]}
+        onComplete={ () => setResult(!isResult)}
+      ></CountdownCircleTimer>
     <StyledDiv>
       <StyleDiv2>
         <StyledScore>-</StyledScore>
@@ -78,6 +60,9 @@ const Survey = () => { // survey : question
       <StyledOption selected={isSelected3} onClick={(): void=> {if(!isSelected3){setSelected(isSelected3); setSelected2(isSelected3); setSelected3(!isSelected3); setSelected4(isSelected3)}}}>여기3</StyledOption>
       <StyledOption selected={isSelected4} onClick={(): void=> {if(!isSelected4){setSelected(isSelected4); setSelected2(isSelected4); setSelected3(isSelected4); setSelected4(!isSelected4)}}}>여기4</StyledOption>
     </StyledDiv>
+    </>
+    }
+    </>
   );
 }
 

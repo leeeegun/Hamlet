@@ -1,71 +1,183 @@
-import React from 'react';
+import { useState } from 'react';
 import { question } from '../../../types';
 import styled from "styled-components";
 import { colors } from '../../../styles/style';
+import Timer from '../../Timer/Timer';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import { Router } from 'react-router-dom';
+import { render } from '@testing-library/react';
+import ReactWordcloud from 'react-wordcloud';
+import { StyledDiv, Styledtitle, StyleDiv2, StyledScore, StyledInput, StyledDiv3, AdminButton } from './styles';
 
-const StyledDiv = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: ${ colors.bgMain };
-  width: 80%;
-  min-height: 60vh;
-  margin : 2em 0 1em 0;
-  border-radius: 10px;
-`;
 
-const  Styledtitle = styled.label`
-  margin : 2.5em 0 5em 3em;
-  font-weight: bold;
-`;
+// 관리자 문제화면
+{/* <StyledDiv3>
+        <AdminButton>
+          Skip
+        </AdminButton>
+        <AdminButton>
+          정답공개
+        </AdminButton>
+      </StyledDiv3> */}
 
-const StyledInput = styled.input`
-  background-color: ${ colors.bgDark };
-  margin: 0 0 1em 0;
-  width: 50%;
-  height: 2em;
-  border-radius: 15px;
-  font: 1em bold;
-  color: black;
-`;
-
-const StyledScore = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content:center;
-  align-content:center;
-  background-color: ${ colors.pointSub1 };
-  min-width: 9vh;
-  max-width: 9vh;
-  min-height: 9vh;
-  max-height: 9vh;
-  border-radius: 100%;
-  margin : 2em 0 5em 0;
-  color: white;
-  font-weight: bold;
-`;
-
-const StyleDiv2 = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-content: center;
-  width: 90%;  
-`;
+// 관리자 결과화면
+{/* <StyledDiv3>
+      <AdminButton>
+        다음 문제 풀기
+      </AdminButton>
+    </StyledDiv3> */}
 
 const Poll = () => { // poll : question
   // const { q, type, time, choices} = poll;
+  const [ isResult, setResult ] = useState<boolean>(false);
+
+  const words = [
+    {
+      text: '정답1',
+      value: 64,
+    },
+    {
+      text: '정답12',
+      value: 11,
+    },
+    {
+      text: '정답123',
+      value: 16,
+    },
+    {
+      text: '정답1234',
+      value: 17,
+    },
+    {
+      text: '정답1',
+      value: 64,
+    },
+    {
+      text: '정답12',
+      value: 11,
+    },
+    {
+      text: '정답123',
+      value: 16,
+    },
+    {
+      text: '정답1234',
+      value: 17,
+    },
+    {
+      text: '정답1',
+      value: 64,
+    },
+    {
+      text: '정답12',
+      value: 11,
+    },
+    {
+      text: '정답123',
+      value: 16,
+    },
+    {
+      text: '정답1234',
+      value: 17,
+    },
+    {
+      text: '정답1',
+      value: 64,
+    },
+    {
+      text: '정답12',
+      value: 11,
+    },
+    {
+      text: '정답123',
+      value: 16,
+    },
+    {
+      text: '정답1234',
+      value: 17,
+    },
+    {
+      text: '정답1',
+      value: 64,
+    },
+    {
+      text: '정답12',
+      value: 11,
+    },
+    {
+      text: '정답123',
+      value: 16,
+    },
+    {
+      text: '정답1234',
+      value: 17,
+    },
+    {
+      text: '정답1',
+      value: 64,
+    },
+    {
+      text: '정답12',
+      value: 11,
+    },
+    {
+      text: '정답123',
+      value: 16,
+    },
+    {
+      text: '정답1234',
+      value: 17,
+    },
+    {
+      text: '정답1',
+      value: 64,
+    },
+    {
+      text: '정답12',
+      value: 11,
+    },
+    {
+      text: '정답123',
+      value: 16,
+    },
+    {
+      text: '정답1234',
+      value: 17,
+    },
+  ]
+
+  const options: any = {
+    fontSizes : [30,60],
+  }
+
   return(
-    <StyledDiv>
-      <StyleDiv2>
-        <StyledScore>20</StyledScore>
-        <Styledtitle>투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표
-        투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표
-        </Styledtitle>
-      </StyleDiv2>
-      <StyledInput placeholder='입력하세요'/>
-    </StyledDiv>
+    <>
+      {isResult ? 
+      <StyledDiv>
+        <Styledtitle>hi</Styledtitle>
+        <ReactWordcloud words={words} options={options} /> 
+      </StyledDiv>  
+        :
+      <>
+      <CountdownCircleTimer
+        isPlaying
+        duration={10}
+        colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+        colorsTime={[10, 6, 3, 0]}
+        onComplete={ () => setResult(!isResult)}
+      ></CountdownCircleTimer>
+      <StyledDiv>
+        <StyleDiv2>
+          <StyledScore>20</StyledScore>
+          <Styledtitle>투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표
+          투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표
+          </Styledtitle>
+        </StyleDiv2>
+        <StyledInput placeholder='입력하세요'/>
+      </StyledDiv>
+      </>
+    }
+    </>
   );
 }
 

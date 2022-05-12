@@ -1,8 +1,5 @@
-import { question } from '../../../types';
-import Timer from '../../Timer/Timer';
 import styled from "styled-components";
-import { colors } from '../../../styles/style';
-import { useState } from 'react'
+import { colors } from "../../../styles/style"; 
 
 const StyledDiv = styled.div`
   display: flex;
@@ -58,6 +55,29 @@ const StyleDiv2 = styled.div`
   width: 90%;  
 `;
 
+const Animate_progress = styled.div`
+  width: 50%;
+  height: 4vh;
+  margin: 20px 10px;
+  border: 1px solid rgb(189, 113, 113);
+  overflow: hidden;
+  position: relative;
+  border-radius: 20px;
+  margin : 0 0 2em 0;
+`;
+
+const Progress_span = styled.span<{ data_progress: number, wcolor: string}>`
+  height: 100%;
+  display: block;
+  width: ${props => props.data_progress}%;
+  color: rgb(255, 251, 251);
+  background-color: ${props => props.wcolor === 'green' ? "green" : props.wcolor === 'red' ? "red" : props.wcolor === 'blue' ? "blue" : "purple" };
+  line-height: 30px;
+  position: absolute;
+  text-align: end;
+  padding-right: 5px;
+`;
+
 const StyledDiv3 = styled.div`
   display: flex;
   flex-direction: column;
@@ -79,28 +99,4 @@ const AdminButton = styled.button`
   color: white;
   font-weight: bold;
 `
-
-const QuizAdmin = () => { // quiz : question
-  //const { q, type, time, point, choices} = quiz;
-  const [ isSelected, setSelected ] = useState<boolean>(false);
-  const [ isSelected2, setSelected2] = useState<boolean>(false);
-
-  return(
-    <>
-      <StyledDiv>
-        <StyleDiv2>
-          <StyledScore>20</StyledScore>
-          <Styledtitle>퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈</Styledtitle>
-        </StyleDiv2>
-        <StyledOption selected={isSelected} onClick={(): void=> {if(!isSelected){setSelected(!isSelected); setSelected2(isSelected);}}}>여기</StyledOption>
-        <StyledOption selected={isSelected2} onClick={(): void=> {if(!isSelected2){setSelected(isSelected2); setSelected2(!isSelected2)}}}>여기2</StyledOption>
-      </StyledDiv>
-      <StyledDiv3>
-        <AdminButton>Skip</AdminButton>
-        <AdminButton>정답 공개</AdminButton>
-      </StyledDiv3>
-    </>
-  );
-}
-
-export default QuizAdmin;
+export { StyledDiv, StyledDiv3, AdminButton, Progress_span, Animate_progress, StyleDiv2, StyledScore, Styledtitle, StyledOption};
