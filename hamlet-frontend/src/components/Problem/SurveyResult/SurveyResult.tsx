@@ -7,12 +7,12 @@ const StyledDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  align-content: center;
+  align-items: center;
   justify-content: flex-start;
   background-color: ${ colors.bgMain };
   width: 80%;
   min-height: 60vh;
-  margin : 2em 0 2em 0;
+  margin : 2em 0 1em 0;
   border-radius: 10px;
 `;
 
@@ -29,7 +29,7 @@ const Animate_progress = styled.div`
   overflow: hidden;
   position: relative;
   border-radius: 20px;
-  margin : 0 0 0 5em;
+  margin : 0 0 0 0;
 `;
 
 const Progress_span = styled.span<{ data_progress: number, wcolor: string}>`

@@ -68,16 +68,38 @@ const StyleDiv2 = styled.div`
   width: 80%;
 `;
 
-function QuizResult( ) { // poll : question
+const StyledDiv3 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+`;
+
+const AdminButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${colors.pointSub2};
+  margin: 0 0 1em 0;
+  width: 45%;
+  height: 6vh;
+  border-radius: 10px;
+  font: 0.7em bold;
+  color: white;
+  font-weight: bold;
+`
+
+const QuizResultAdmin = () => { // poll : question
   // const { q, type, time, choices} = poll;
   return(
+    <>
     <StyledDiv>
       <StyleDiv2>
         <StyledScore>20</StyledScore>
         <Styledtitle>결과결과결과결과결과결과결과결과결과결과결과결과결과결과결과결과결과결과결과결과결과결과결과
           결과결과결과결과결과결과결과결과결과</Styledtitle>
       </StyleDiv2>
-      
       <p>첫번째 문항 72%</p>
       <Animate_progress>
         <Progress_span data_progress={72} wcolor={"red"}>72%</Progress_span>
@@ -87,7 +109,13 @@ function QuizResult( ) { // poll : question
         <Progress_span data_progress={28} wcolor={"blue"}>28%</Progress_span>
       </Animate_progress>
     </StyledDiv>
+    <StyledDiv3>
+      <AdminButton>
+        다음 문제 풀기
+      </AdminButton>
+    </StyledDiv3>
+    </>
   );
 }
 
-export default QuizResult;
+export default QuizResultAdmin;

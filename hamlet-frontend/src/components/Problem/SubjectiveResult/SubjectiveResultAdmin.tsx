@@ -13,7 +13,7 @@ const StyledDiv = styled.div`
   background-color: ${ colors.bgMain };
   width: 80%;
   min-height: 60vh;
-  margin : 2em 0 1em 0;
+  margin : 2em 0 0 0;
   border-radius: 10px;
 `;
 
@@ -52,12 +52,35 @@ const StyledResult = styled.span`
   margin: 0 0 1em 0;
 `
 
+const StyledDiv3 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+`;
+
+const AdminButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${colors.pointSub2};
+  margin: 1em 0 1em 0;
+  width: 45%;
+  height: 6vh;
+  border-radius: 10px;
+  font: 0.7em bold;
+  color: white;
+  font-weight: bold;
+`
+
 // <StyledInput value="input" />
-const SubjectiveResult = () => { //  subjective : question
+const SubjectiveResultAdmin = () => { //  subjective : question
   // const { q, type, time, point} = subjective; // 주관식
   //https://eundol1113.tistory.com/314
 
   return(
+    <>
     <StyledDiv>
       <StyleDiv2>
         <StyledScore>20</StyledScore>
@@ -67,7 +90,13 @@ const SubjectiveResult = () => { //  subjective : question
       </StyleDiv2>
       <StyledResult>답출력</StyledResult>
     </StyledDiv>
+    <StyledDiv3>
+      <AdminButton>
+        다음 문제 풀기
+      </AdminButton>
+    </StyledDiv3>
+    </>
   );
 }
 
-export default SubjectiveResult;
+export default SubjectiveResultAdmin;

@@ -7,12 +7,12 @@ const StyledDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  align-content: center;
+  align-items: center;
   justify-content: flex-start;
   background-color: ${ colors.bgMain };
   width: 80%;
   min-height: 60vh;
-  margin : 2em 0 0 0;
+  margin : 2em 0 1em 0;
   border-radius: 10px;
 `;
 
@@ -23,7 +23,7 @@ const  Styledtitle = styled.label`
 
 const StyledInput = styled.input`
   background-color: ${ colors.bgDark };
-  margin: 0 0 1em 7em;
+  margin: 0 0 1em 0;
   width: 40%;
   height: 5vh;
   border-radius: 5px;
@@ -36,7 +36,7 @@ const StyledScore = styled.div`
   display: flex;
   flex-direction: column;
   justify-content:center;
-  align-content:center;
+  align-items:center;
   background-color: ${ colors.pointSub1 };
   min-width: 9vh;
   max-width: 9vh;

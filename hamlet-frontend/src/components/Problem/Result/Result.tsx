@@ -21,13 +21,12 @@ const StyledOption = styled.div<{isTitle: boolean}>`
 const StyledDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
-  flex-direction: rows;
   align-content: center;
   justify-content: center;
   background-color: #FFB762;
   width: 80%;
   min-height: 60vh;
-  margin-top : 2em;
+  margin : 2em 0 1em 0;
   border-radius: 10px;
   padding: 1em 0 1em 0;
 `;
@@ -35,7 +34,7 @@ const StyledDiv = styled.div`
 const Result = () => {
   return(
     <StyledDiv>
-      <StyledOption isTitle={true}>현재까지 순위</StyledOption>
+      <StyledOption isTitle={true}>최종 순위</StyledOption>
       <StyledOption isTitle={false}><p>1위</p> <p>A206_윤혜구</p> <p>1500점</p></StyledOption>
       <StyledOption isTitle={false}><p>2위</p> <p>A206_이규은</p> <p>1320점</p></StyledOption>
       <StyledOption isTitle={false}><p>3위</p> <p>A206_이건</p> <p>1280점</p></StyledOption>

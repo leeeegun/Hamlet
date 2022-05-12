@@ -58,21 +58,49 @@ const StyleDiv2 = styled.div`
   width: 80%;  
 `;
 
-const Quiz = () => { // quiz : question
+const StyledDiv3 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+`;
+
+const AdminButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${colors.pointSub2};
+  margin: 0 0 1em 0;
+  width: 45%;
+  height: 6vh;
+  border-radius: 10px;
+  font: 0.7em bold;
+  color: white;
+  font-weight: bold;
+`
+
+const QuizAdmin = () => { // quiz : question
   //const { q, type, time, point, choices} = quiz;
   const [ isSelected, setSelected ] = useState<boolean>(false);
   const [ isSelected2, setSelected2] = useState<boolean>(false);
 
   return(
-    <StyledDiv>
-      <StyleDiv2>
-        <StyledScore>20</StyledScore>
-        <Styledtitle>퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈</Styledtitle>
-      </StyleDiv2>
-      <StyledOption selected={isSelected} onClick={(): void=> {if(!isSelected){setSelected(!isSelected); setSelected2(isSelected);}}}>여기</StyledOption>
-      <StyledOption selected={isSelected2} onClick={(): void=> {if(!isSelected2){setSelected(isSelected2); setSelected2(!isSelected2)}}}>여기2</StyledOption>
-    </StyledDiv>
+    <>
+      <StyledDiv>
+        <StyleDiv2>
+          <StyledScore>20</StyledScore>
+          <Styledtitle>퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈퀴즈</Styledtitle>
+        </StyleDiv2>
+        <StyledOption selected={isSelected} onClick={(): void=> {if(!isSelected){setSelected(!isSelected); setSelected2(isSelected);}}}>여기</StyledOption>
+        <StyledOption selected={isSelected2} onClick={(): void=> {if(!isSelected2){setSelected(isSelected2); setSelected2(!isSelected2)}}}>여기2</StyledOption>
+      </StyledDiv>
+      <StyledDiv3>
+        <AdminButton>Skip</AdminButton>
+        <AdminButton>정답 공개</AdminButton>
+      </StyledDiv3>
+    </>
   );
 }
 
-export default Quiz;
+export default QuizAdmin;

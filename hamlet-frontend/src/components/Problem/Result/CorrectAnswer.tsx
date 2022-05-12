@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import {colors} from '../../../styles/style';
 
 
 const StyledDiv = styled.div`
@@ -10,7 +10,7 @@ const StyledDiv = styled.div`
   background-color: #FFB762;
   width: 80%;
   min-height: 40vh;
-  margin : 2em 1em 1em 1em;
+  margin : 2em 0 1em 0;
   border-radius: 10px;
 `;
 

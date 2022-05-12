@@ -2,6 +2,7 @@ import React from 'react';
 import { question } from '../../../types';
 import styled from "styled-components";
 import ReactWordcloud from 'react-wordcloud';
+import {colors} from '../../../styles/style';
 
 const StyledDiv = styled.div`
   display: flex;
@@ -21,8 +22,30 @@ const  Styledtitle = styled.label`
   margin : 2em 0 0 0;
 `;
 
+const StyledDiv3 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+`;
+
+const AdminButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${colors.pointSub2};
+  margin: 0 0 1em 0;
+  width: 45%;
+  height: 6vh;
+  border-radius: 10px;
+  font: 0.7em bold;
+  color: white;
+  font-weight: bold;
+`
+
 // <StyledInput value="input" />
-function PollResult() { //  subjective : question
+function PollResultAdmin() { //  subjective : question
   // const { q, type, time, point} = subjective; // 주관식
   //https://eundol1113.tistory.com/314
   const words = [
@@ -146,12 +169,18 @@ function PollResult() { //  subjective : question
 
 //<div style={{height:400, width:600, bottom:"3em"}} ></div>
   return(
+    <>
     <StyledDiv>
       <Styledtitle>hi</Styledtitle>
       <ReactWordcloud words={words} options={options} />
-      
     </StyledDiv>
+    <StyledDiv3>
+      <AdminButton>
+        다음 문제 풀기
+      </AdminButton>
+    </StyledDiv3>
+    </>
   );
 }
 
-export default PollResult;
+export default PollResultAdmin;

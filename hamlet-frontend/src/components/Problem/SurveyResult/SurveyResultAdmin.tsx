@@ -3,14 +3,13 @@ import { question } from '../../../types';
 import styled from "styled-components";
 import { colors } from '../../../styles/style';
 
-
 const StyledDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-color: ${colors.bgMain};
+  background-color: ${ colors.bgMain };
   width: 80%;
   min-height: 60vh;
   margin : 2em 0 1em 0;
@@ -30,7 +29,7 @@ const Animate_progress = styled.div`
   overflow: hidden;
   position: relative;
   border-radius: 20px;
-  margin : 0 0 2em 0;
+  margin : 0 0 0 0;
 `;
 
 const Progress_span = styled.span<{ data_progress: number, wcolor: string}>`
@@ -41,8 +40,15 @@ const Progress_span = styled.span<{ data_progress: number, wcolor: string}>`
   background-color: ${props => props.wcolor === 'green' ? "green" : props.wcolor === 'red' ? "red" : props.wcolor === 'blue' ? "blue" : "purple" };
   line-height: 30px;
   position: absolute;
-  text-align: end;
-  padding-right: 5px;
+  text-align: start;
+  padding-left: 5px;
+`;
+
+const StyleDiv2 = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  width: 80%;
 `;
 
 const StyledScore = styled.div`
@@ -59,35 +65,68 @@ const StyledScore = styled.div`
   margin : 2em 0 5em 0;
   color: white;
   font-weight: bold;
-`;
+`;  
 
-const StyleDiv2 = styled.div`
+const Styledp = styled.p`
+  font-weight: bold;
+`
+
+const StyledDiv3 = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
-  align-content: center;
+  align-items: center;
   width: 80%;
 `;
 
-function QuizResult( ) { // poll : question
+const AdminButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${colors.pointSub2};
+  margin: 0 0 1em 0;
+  width: 45%;
+  height: 6vh;
+  border-radius: 10px;
+  font: 0.7em bold;
+  color: white;
+  font-weight: bold;
+`
+
+const SurveyResultAdmin = () => { // poll : question
   // const { q, type, time, choices} = poll;
   return(
+    <>
     <StyledDiv>
       <StyleDiv2>
-        <StyledScore>20</StyledScore>
-        <Styledtitle>결과결과결과결과결과결과결과결과결과결과결과결과결과결과결과결과결과결과결과결과결과결과결과
-          결과결과결과결과결과결과결과결과결과</Styledtitle>
+        <StyledScore>-</StyledScore>
+        <Styledtitle>현재 다니는 SSAFY캠퍼스는 어딘가요?</Styledtitle>
       </StyleDiv2>
-      
-      <p>첫번째 문항 72%</p>
+      <Styledp>서울 캠퍼스 72%</Styledp>
       <Animate_progress>
-        <Progress_span data_progress={72} wcolor={"red"}>72%</Progress_span>
+        <Progress_span data_progress={72} wcolor={"blue"}></Progress_span>
       </Animate_progress>
-      <p>두번째 문항 28%</p>
+      <Styledp>대전 캠퍼스 13%</Styledp>
       <Animate_progress>
-        <Progress_span data_progress={28} wcolor={"blue"}>28%</Progress_span>
+        <Progress_span data_progress={13} wcolor={"red"}></Progress_span>
       </Animate_progress>
+      <Styledp>부울경 캠퍼스 8%</Styledp>
+      <Animate_progress>
+        <Progress_span data_progress={8} wcolor={"purple"}></Progress_span>
+      </Animate_progress>
+      <Styledp>구미 캠퍼스 7%</Styledp>
+      <Animate_progress>
+        <Progress_span data_progress={7} wcolor={"green"}></Progress_span>
+      </Animate_progress>
+      <br/>
     </StyledDiv>
+    <StyledDiv3>
+      <AdminButton>
+        다음 문제 풀기
+      </AdminButton>
+    </StyledDiv3>
+    </>
   );
 }
 
-export default QuizResult;
+export default SurveyResultAdmin;

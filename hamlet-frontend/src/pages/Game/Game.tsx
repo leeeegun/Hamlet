@@ -16,6 +16,17 @@ import SurveyResult from '../../components/Problem/SurveyResult/SurveyResult';
 import ConrrectAnswer from '../../components/Problem/Result/CorrectAnswer';
 import Result from '../../components/Problem/Result/Result';
 import styled from 'styled-components';
+import PollAdmin from '../../components/Problem/Poll/PollAdmin';
+import PollResultAdmin from '../../components/Problem/PollResult/PollResultAdmin';
+import QuizAdmin from '../../components/Problem/Quiz/QuizAdmin';
+import QuizResultAdmin from '../../components/Problem/QuizResult/QuizResultAdmin';
+import ResultAdmin from '../../components/Problem/Result/ResultAdmin';
+import SubjectiveAdmin from '../../components/Problem/Subjective/SubjectiveAdmin';
+import SubjectiveResultAdmin from '../../components/Problem/SubjectiveResult/SubjectiveResultAdmin';
+import SurveyAdmin from '../../components/Problem/Survey/SurveyAdmin';
+import SurveyResultAdmin from '../../components/Problem/SurveyResult/SurveyResultAdmin';
+import Participant from '../../components/Participant/Participant';
+import ParticipantAdmin from '../../components/Participant/ParticipantAdmin';
 
 const StyledLogo = styled.img`
   height: 12vmin;
@@ -55,7 +66,7 @@ const Game = ()  => { // myQs : question[]
       <StyledRoom>
         <StyledLogo src={logo} alt="logo" />
         <Timer ss={'30'} />
-        <SurveyResult />
+        <ParticipantAdmin />
       </StyledRoom>
     </StyledApp>
   );

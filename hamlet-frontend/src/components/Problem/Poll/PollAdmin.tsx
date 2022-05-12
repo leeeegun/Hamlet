@@ -55,19 +55,51 @@ const StyleDiv2 = styled.div`
   width: 80%;  
 `;
 
-function Poll( ) { // poll : question
+const AdminButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${colors.pointSub2};
+  margin: 0 0 1em 0;
+  width: 45%;
+  height: 6vh;
+  border-radius: 10px;
+  font: 0.7em bold;
+  color: white;
+  font-weight: bold;
+`
+
+const StyledDiv3 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+`;
+
+function PollAdmin( ) { // poll : question
   // const { q, type, time, choices} = poll;
   return(
-    <StyledDiv>
-      <StyleDiv2>
-        <StyledScore>20</StyledScore>
-        <Styledtitle>투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표
-        투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표
-        </Styledtitle>
-      </StyleDiv2>
-      <StyledInput placeholder='입력하세요'/>
-    </StyledDiv>
+    <>
+      <StyledDiv>
+        <StyleDiv2>
+          <StyledScore>20</StyledScore>
+          <Styledtitle>투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표
+          투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표
+          </Styledtitle>
+        </StyleDiv2>
+        <StyledInput placeholder='입력하세요'/>
+      </StyledDiv>
+      <StyledDiv3>
+        <AdminButton>
+          Skip
+        </AdminButton>
+        <AdminButton>
+          정답공개
+        </AdminButton>
+      </StyledDiv3>
+    </>
   );
 }
 
-export default Poll;
+export default PollAdmin;
