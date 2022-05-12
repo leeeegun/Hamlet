@@ -66,7 +66,7 @@ const Game = ()  => { // myQs : question[]
       <StyledRoom>
         <StyledLogo src={logo} alt="logo" />
         <Timer ss={'30'} />
-        <ParticipantAdmin />
+        <SubjectiveResult />
       </StyledRoom>
     </StyledApp>
   );

@@ -24,12 +24,11 @@ const  Styledtitle = styled.label`
 const StyledInput = styled.input`
   background-color: ${ colors.bgDark };
   margin: 0 0 1em 0;
-  width: 40%;
-  height: 5vh;
+  width: 50%;
+  height: 2em;
   border-radius: 5px;
-  font: 0.9em bold;
+  font: 1em bold;
   color: black;
-  padding: 0 3em 0 0;
 `;
 
 const StyledScore = styled.div`
@@ -52,7 +51,7 @@ const StyleDiv2 = styled.div`
   display: flex;
   justify-content: flex-start;
   align-content: center;
-  width: 80%;  
+  width: 90%;  
 `;
 
 const Subjective = () => { // poll : question

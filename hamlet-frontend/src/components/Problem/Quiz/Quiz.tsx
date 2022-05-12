@@ -23,8 +23,8 @@ const StyledOption = styled.button<{ selected: boolean }>`
   align-items: center;
   background-color: ${props => props.selected? colors.pointSub2 : colors.bgDark};
   margin: 0 0 1em 0;
-  width: 50%;
-  height: 6vh;
+  width: 40%;
+  height: 2.5em;
   border-radius: 50px;
   font: 0.7em bold;
   color: ${props => props.selected? "white" : "black" };
@@ -55,7 +55,7 @@ const StyleDiv2 = styled.div`
   display: flex;
   justify-content: flex-start;
   align-content: center;
-  width: 80%;  
+  width: 90%;  
 `;
 
 const Quiz = () => { // quiz : question

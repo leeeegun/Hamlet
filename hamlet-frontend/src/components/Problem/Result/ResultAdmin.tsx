@@ -36,7 +36,7 @@ const StyledDiv3 = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 80%;
+  width: 60%;
 `;
 
 const AdminButton = styled.button`
@@ -45,8 +45,8 @@ const AdminButton = styled.button`
   align-items: center;
   background-color: ${colors.pointSub2};
   margin: 1em 0 1em 0;
-  width: 45%;
-  height: 6vh;
+  width: 40%;
+  height: 2.5em;
   border-radius: 10px;
   font: 0.7em bold;
   color: white;

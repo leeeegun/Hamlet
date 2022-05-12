@@ -18,11 +18,11 @@ const StyledDiv = styled.div`
 `;
 
 const  Styledtitle = styled.label`
-  margin : 2em 0 0 0;
+  margin : 2em 0 1em 0;
 `;
 
 // <StyledInput value="input" />
-function PollResult() { //  subjective : question
+const PollResult = () => { //  subjective : question
   // const { q, type, time, point} = subjective; // 주관식
   //https://eundol1113.tistory.com/314
   const words = [

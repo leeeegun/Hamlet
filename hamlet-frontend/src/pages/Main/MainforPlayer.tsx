@@ -1,3 +1,5 @@
+import React from 'react';
+import logo from '../../images/logo.png';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -30,9 +32,20 @@ const StyledLogo = styled.img`
   pointer-events: none;
 `
 
-const StyledLink = styled(Link)`
-  font-size: 13px;
-  text-decoration: none;
-`;
+const MainforPlayer = () => {
+  return(
+    <StyledApp>
+      <StyledHeader>
+        <StyledLogo src={logo} alt="logo" />
+        <div>
+          <StyledInput type="text" placeholder="코드입력"/>
+          <br/>
+          <StyledInput type="submit" value="Submit" style={{ backgroundColor: '#3A342F', color:"#F2E9DF" }}/>
+          <br/>
+        </div>
+        </StyledHeader>
+    </StyledApp>
+  );
+}
 
-export { StyledInput, StyledHeader, StyledApp, StyledLogo, StyledLink };
+export default MainforPlayer;

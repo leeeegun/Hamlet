@@ -25,11 +25,10 @@ const StyledInput = styled.input`
   background-color: ${ colors.bgDark };
   margin: 0 0 1em 0;
   width: 50%;
-  height: 5vh;
-  border-radius: 5px;
-  font: 0.9em bold;
+  height: 2em;
+  border-radius: 15px;
+  font: 1em bold;
   color: black;
-  padding: 0 3em 0 0;
 `;
 
 const StyledScore = styled.div`
@@ -52,10 +51,10 @@ const StyleDiv2 = styled.div`
   display: flex;
   justify-content: flex-start;
   align-content: center;
-  width: 80%;  
+  width: 90%;  
 `;
 
-function Poll( ) { // poll : question
+const Poll = () => { // poll : question
   // const { q, type, time, choices} = poll;
   return(
     <StyledDiv>

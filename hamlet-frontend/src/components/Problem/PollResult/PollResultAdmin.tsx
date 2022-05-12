@@ -19,7 +19,7 @@ const StyledDiv = styled.div`
 `;
 
 const  Styledtitle = styled.label`
-  margin : 2em 0 0 0;
+  margin : 2em 0 1em 0;
 `;
 
 const StyledDiv3 = styled.div`
@@ -27,7 +27,7 @@ const StyledDiv3 = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 80%;
+  width: 60%;
 `;
 
 const AdminButton = styled.button`
@@ -36,8 +36,8 @@ const AdminButton = styled.button`
   align-items: center;
   background-color: ${colors.pointSub2};
   margin: 0 0 1em 0;
-  width: 45%;
-  height: 6vh;
+  width: 40%;
+  height: 2.5em;
   border-radius: 10px;
   font: 0.7em bold;
   color: white;
@@ -45,7 +45,7 @@ const AdminButton = styled.button`
 `
 
 // <StyledInput value="input" />
-function PollResultAdmin() { //  subjective : question
+const PollResultAdmin = () => { //  subjective : question
   // const { q, type, time, point} = subjective; // 주관식
   //https://eundol1113.tistory.com/314
   const words = [

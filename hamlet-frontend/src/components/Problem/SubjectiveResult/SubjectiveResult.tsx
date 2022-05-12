@@ -42,7 +42,7 @@ const StyleDiv2 = styled.div`
   display: flex;
   justify-content: flex-start;
   align-content: center;
-  width: 80%;  
+  width: 90%;  
 `;
 
 const StyledResult = styled.span`
