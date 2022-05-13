@@ -20,6 +20,7 @@ import java.util.List;
 @Api(value = "게임 API", tags = {"Game"})
 @RestController
 @RequestMapping("/games")
+@CrossOrigin(origins = "*")
 public class GameController {
 
     @Autowired

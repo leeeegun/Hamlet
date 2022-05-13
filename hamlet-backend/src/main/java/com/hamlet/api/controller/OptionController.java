@@ -20,6 +20,7 @@ import java.util.List;
 @Api(value = "선택지 API", tags = {"Option"})
 @RestController
 @RequestMapping("/options")
+@CrossOrigin(origins = "*")
 public class OptionController {
 
     @Autowired
