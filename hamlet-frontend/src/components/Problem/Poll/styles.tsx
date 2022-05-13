@@ -74,4 +74,11 @@ const StyledDiv3 = styled.div`
   width: 60%;
 `;
 
-export { StyleDiv2, StyledScore, StyledInput, Styledtitle, StyledDiv, AdminButton, StyledDiv3};
+const StyledTimer = styled.div`
+  font-family: "Montserrat";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2em;
+`
+export { StyleDiv2, StyledScore, StyledTimer, StyledInput, Styledtitle, StyledDiv, AdminButton, StyledDiv3};

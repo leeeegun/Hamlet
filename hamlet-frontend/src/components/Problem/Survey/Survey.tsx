@@ -1,11 +1,14 @@
-import { question } from '../../../types';
+import { question,hamlet2 } from '../../../types';
 import { useState } from 'react'
-import Timer from '../../Timer/Timer';
-import { StyledDiv, StyledScore, Styledtitle, StyleDiv2, StyledOption, Styledp, Progress_span, Animate_progress } from './styles';
+import { StyledDiv, StyledScore, Styledtitle, StyledTimer, StyleDiv2, StyledOption, Styledp, Progress_span, Animate_progress } from './styles';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
+type HamletProps = {
+  survey: hamlet2
+}
+
+
 const Survey = () => { // survey : question
-  // const { q, type, time} = survey; // 설문
   const [ isSelected, setSelected ] = useState<boolean>(false);
   const [ isSelected2, setSelected2] = useState<boolean>(false);
   const [ isSelected3, setSelected3] = useState<boolean>(false);
@@ -14,6 +17,11 @@ const Survey = () => { // survey : question
   //background-color: ${props => props.selected? colors.pointSub2 : colors.bgDark};
   // color: ${props => props.selected? "white" : "black" };
 
+  const renderTime = ({ remainingTime }:any) => {
+    return (
+      <StyledTimer>{remainingTime}</StyledTimer>
+    );
+  };
   
   return(
     <>
@@ -21,21 +29,21 @@ const Survey = () => { // survey : question
     <StyledDiv>
       <StyleDiv2>
         <StyledScore>-</StyledScore>
-        <Styledtitle>현재 다니는 SSAFY캠퍼스는 어딘가요?</Styledtitle>
+        <Styledtitle>Survey</Styledtitle>
       </StyleDiv2>
-      <Styledp>서울 캠퍼스 72%</Styledp>
+      <Styledp>첫번째 문항 72%</Styledp>
       <Animate_progress>
         <Progress_span data_progress={72} wcolor={"blue"}></Progress_span>
       </Animate_progress>
-      <Styledp>대전 캠퍼스 13%</Styledp>
+      <Styledp>두번째 문항 13%</Styledp>
       <Animate_progress>
         <Progress_span data_progress={13} wcolor={"red"}></Progress_span>
       </Animate_progress>
-      <Styledp>부울경 캠퍼스 8%</Styledp>
+      <Styledp>세번째 문항 8%</Styledp>
       <Animate_progress>
         <Progress_span data_progress={8} wcolor={"purple"}></Progress_span>
       </Animate_progress>
-      <Styledp>구미 캠퍼스 7%</Styledp>
+      <Styledp>네번째 문항 7%</Styledp>
       <Animate_progress>
         <Progress_span data_progress={7} wcolor={"green"}></Progress_span>
       </Animate_progress>
@@ -49,16 +57,16 @@ const Survey = () => { // survey : question
         colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
         colorsTime={[10, 6, 3, 0]}
         onComplete={ () => setResult(!isResult)}
-      ></CountdownCircleTimer>
+      >{renderTime}</CountdownCircleTimer>
     <StyledDiv>
       <StyleDiv2>
         <StyledScore>-</StyledScore>
-        <Styledtitle>현재 다니는 SSAFY캠퍼스는 어딘가요?</Styledtitle>
+        <Styledtitle>Survey</Styledtitle>
       </StyleDiv2>
-      <StyledOption selected={isSelected} onClick={(): void=> {if(!isSelected){setSelected(!isSelected); setSelected2(isSelected); setSelected3(isSelected); setSelected4(isSelected)}}}>여기</StyledOption>
-      <StyledOption selected={isSelected2} onClick={(): void=> {if(!isSelected2){setSelected(isSelected2); setSelected2(!isSelected2); setSelected3(isSelected2); setSelected4(isSelected2)}}}>여기2</StyledOption>
-      <StyledOption selected={isSelected3} onClick={(): void=> {if(!isSelected3){setSelected(isSelected3); setSelected2(isSelected3); setSelected3(!isSelected3); setSelected4(isSelected3)}}}>여기3</StyledOption>
-      <StyledOption selected={isSelected4} onClick={(): void=> {if(!isSelected4){setSelected(isSelected4); setSelected2(isSelected4); setSelected3(isSelected4); setSelected4(!isSelected4)}}}>여기4</StyledOption>
+      <StyledOption selected={isSelected} onClick={(): void=> {if(!isSelected){setSelected(!isSelected); setSelected2(isSelected); setSelected3(isSelected); setSelected4(isSelected)}}}>첫번째 문항</StyledOption>
+      <StyledOption selected={isSelected2} onClick={(): void=> {if(!isSelected2){setSelected(isSelected2); setSelected2(!isSelected2); setSelected3(isSelected2); setSelected4(isSelected2)}}}>두번째 문항</StyledOption>
+      <StyledOption selected={isSelected3} onClick={(): void=> {if(!isSelected3){setSelected(isSelected3); setSelected2(isSelected3); setSelected3(!isSelected3); setSelected4(isSelected3)}}}>세번째 문항</StyledOption>
+      <StyledOption selected={isSelected4} onClick={(): void=> {if(!isSelected4){setSelected(isSelected4); setSelected2(isSelected4); setSelected3(isSelected4); setSelected4(!isSelected4)}}}>네번째 문항</StyledOption>
     </StyledDiv>
     </>
     }

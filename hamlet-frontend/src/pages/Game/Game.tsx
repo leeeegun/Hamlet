@@ -1,7 +1,6 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import logo from '../../images/logo.png';
-import Timer from '../../components/Timer/Timer';
-import { question } from '../../types';
+import { question, hamlet2 } from '../../types';
 
 import Quiz from '../../components/Problem/Quiz/Quiz';
 import Problem from '../../components/Problem/Problem';
@@ -13,6 +12,8 @@ import Result from '../../components/Problem/Result/Result';
 import styled from 'styled-components';
 import Participant from '../../components/Participant/Participant';
 import ParticipantAdmin from '../../components/Participant/ParticipantAdmin';
+import axios from 'axios';
+
 
 const StyledLogo = styled.img`
   height: 12vmin;
@@ -34,24 +35,68 @@ const StyledRoom = styled.div`
 `;
 
 const Game = ()  => { // myQs : question[]
-  // const test  = () => {
-  //   for (let qus of myQs){ // 햄릿 안에 질문 받아오기
-  //     if (qus.type === 'quiz'){
-  //       <Quiz {...qus}/>
-  //     } else if (qus.type === 'poll'){
-  //       <Poll {...qus}/>
-  //     } else if (qus.type === 'survey'){
-  //       <Survey {...qus}/>
-  //     } else if (qus.type === 'subjective'){
-  //       <Subjective {...qus}/>
+  // const [hamletdata, sethamletdata] = useState<hamlet2[]>([]);
+  // const onData = async() => {
+  //   var config = {
+  //     method: 'get',
+  //     url: `k6a206.p.ssafy.io:8080//questions/{hamletId}`,
+  //   };
+
+  //   try{
+  //     const data = await axios(config);
+  //     sethamletdata(data.data)
+  //     for (let ham of hamletdata){
+  //       if (ham.kinds === 0){
+  //         return (
+  //           <StyledApp>
+  //             <StyledRoom>
+  //               <StyledLogo src={logo} alt="logo" />
+  //               <Quiz quiz={ham} />
+  //             </StyledRoom>
+  //           </StyledApp>
+  //         );
+  //       } else if (ham.kinds === 1){
+  //         return (
+  //           <StyledApp>
+  //             <StyledRoom>
+  //               <StyledLogo src={logo} alt="logo" />
+  //               <Poll poll={ham}  />
+  //             </StyledRoom>
+  //           </StyledApp>
+  //         );
+  //       } else if (ham.kinds === 2){
+  //         return (
+  //           <StyledApp>
+  //             <StyledRoom>
+  //               <StyledLogo src={logo} alt="logo" />
+  //               <Subjective subjective={ham} />
+  //             </StyledRoom>
+  //           </StyledApp>
+  //         );
+  //       } else if (ham.kinds === 3){
+  //         return (
+  //           <StyledApp>
+  //             <StyledRoom>
+  //               <StyledLogo src={logo} alt="logo" />
+  //               <Survey survey={ham} />
+  //             </StyledRoom>
+  //           </StyledApp>
+  //         );
+  //       }
   //     }
+  //   }catch(err){
+  //     console.error(err);
   //   }
   // }
+
+  // useEffect(()=>{
+  //   onData()
+  // }, [])
   return (
     <StyledApp>
       <StyledRoom>
         <StyledLogo src={logo} alt="logo" />
-        <Subjective />
+        <Survey />
       </StyledRoom>
     </StyledApp>
   );

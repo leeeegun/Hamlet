@@ -15,4 +15,22 @@ interface hamlet {
     date?: Date; 
 }
 
-export type { QuestionType, question, hamlet };
+interface Options{
+    optionId: number;
+    contents: string;
+    answer: boolean;
+}
+interface hamlet2{
+    questionId : number;
+    kinds : number;
+    time : number;
+    orders : number;
+    multiple : boolean;
+    contents : string;
+    options : Options[];
+    point : number;
+}
+
+
+
+export type { QuestionType, question, hamlet, hamlet2, Options };

@@ -99,4 +99,12 @@ const AdminButton = styled.button`
   color: white;
   font-weight: bold;
 `
-export { StyledDiv, StyledDiv3, AdminButton, Progress_span, Animate_progress, StyleDiv2, StyledScore, Styledtitle, StyledOption};
+
+const StyledTimer = styled.div`
+  font-family: "Montserrat";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2em;
+`
+export { StyledDiv, StyledTimer, StyledDiv3, AdminButton, Progress_span, Animate_progress, StyleDiv2, StyledScore, Styledtitle, StyledOption};
