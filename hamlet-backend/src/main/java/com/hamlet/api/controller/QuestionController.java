@@ -17,6 +17,7 @@ import java.util.List;
 @Api(value = "질문 API", tags = {"Question"})
 @RestController
 @RequestMapping("/questions")
+@CrossOrigin(origins = "*")
 public class QuestionController {
 
     @Autowired
