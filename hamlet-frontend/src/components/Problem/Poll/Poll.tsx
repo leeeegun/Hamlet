@@ -1,14 +1,17 @@
 import { useState } from 'react';
-import { question } from '../../../types';
+import { question, hamlet2 } from '../../../types';
 import styled from "styled-components";
 import { colors } from '../../../styles/style';
-import Timer from '../../Timer/Timer';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import { Router } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import ReactWordcloud from 'react-wordcloud';
-import { StyledDiv, Styledtitle, StyleDiv2, StyledScore, StyledInput, StyledDiv3, AdminButton } from './styles';
+import { StyledDiv, Styledtitle, StyleDiv2, StyledTimer, StyledScore, StyledInput, StyledDiv3, AdminButton } from './styles';
 
+
+type HamletProps = {
+  poll: hamlet2
+}
 
 // 관리자 문제화면
 {/* <StyledDiv3>
@@ -27,9 +30,11 @@ import { StyledDiv, Styledtitle, StyleDiv2, StyledScore, StyledInput, StyledDiv3
       </AdminButton>
     </StyledDiv3> */}
 
-const Poll = () => { // poll : question
-  // const { q, type, time, choices} = poll;
+const Poll = ({poll} : HamletProps) => { 
+  const { questionId, kinds, time, orders, multiple, contents} = poll;
   const [ isResult, setResult ] = useState<boolean>(false);
+  const [ isAdmin, setAdmin ] = useState<boolean>(false);
+  
 
   const words = [
     {
@@ -146,37 +151,83 @@ const Poll = () => { // poll : question
     },
   ]
 
+  
+
   const options: any = {
     fontSizes : [30,60],
   }
 
+  const renderTime = ({ remainingTime }:any) => {
+    return (
+      <StyledTimer>{remainingTime}</StyledTimer>
+    );
+  };
+
+
   return(
     <>
       {isResult ? 
-      <StyledDiv>
-        <Styledtitle>hi</Styledtitle>
-        <ReactWordcloud words={words} options={options} /> 
-      </StyledDiv>  
+          isAdmin ?
+          <>
+            <StyledDiv>
+              <Styledtitle>contents</Styledtitle>
+              <ReactWordcloud words={words} options={options} /> 
+            </StyledDiv>
+            <StyledDiv3>
+              <AdminButton>
+                다음 문제 풀기
+              </AdminButton>
+            </StyledDiv3>
+          </>
+          :
+          <StyledDiv>
+            <Styledtitle>contents</Styledtitle>
+            <ReactWordcloud words={words} options={options} /> 
+          </StyledDiv>
         :
-      <>
-      <CountdownCircleTimer
-        isPlaying
-        duration={10}
-        colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-        colorsTime={[10, 6, 3, 0]}
-        onComplete={ () => setResult(!isResult)}
-      ></CountdownCircleTimer>
-      <StyledDiv>
-        <StyleDiv2>
-          <StyledScore>20</StyledScore>
-          <Styledtitle>투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표
-          투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표
-          </Styledtitle>
-        </StyleDiv2>
-        <StyledInput placeholder='입력하세요'/>
-      </StyledDiv>
-      </>
-    }
+          isAdmin ? 
+          <>
+            <CountdownCircleTimer
+              isPlaying
+              duration={time}
+              colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+              colorsTime={[10, 6, 3, 0]}
+              onComplete={ () => setResult(!isResult)}
+            >{renderTime}</CountdownCircleTimer>
+            <StyledDiv>
+              <StyleDiv2>
+                <StyledScore>-</StyledScore>
+                <Styledtitle>{contents}</Styledtitle>
+              </StyleDiv2>
+              <StyledInput placeholder='입력하세요'/>
+            </StyledDiv>
+            <StyledDiv3>
+              <AdminButton>
+                Skip
+              </AdminButton>
+              <AdminButton>
+                정답공개
+              </AdminButton>
+            </StyledDiv3>
+          </>
+          : 
+            <>
+              <CountdownCircleTimer
+                isPlaying
+                duration={time}
+                colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+                colorsTime={[10, 6, 3, 0]}
+                onComplete={ () => setResult(!isResult)}
+              >{renderTime}</CountdownCircleTimer>
+              <StyledDiv>
+                <StyleDiv2>
+                  <StyledScore>-</StyledScore>
+                  <Styledtitle>{contents}</Styledtitle>
+                </StyleDiv2>
+                <StyledInput placeholder='입력하세요'/>
+              </StyledDiv>
+            </>
+      }
     </>
   );
 }

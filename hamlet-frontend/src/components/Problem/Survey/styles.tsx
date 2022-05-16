@@ -27,6 +27,19 @@ const StyledOption = styled.button<{ selected: boolean }>`
     color: black
   `;
 
+  const StyledOption2 = styled.button` 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: colors.pointSub2;
+  margin: 0 0 1em 0;
+  width: 40%;
+  height: 2.5em;
+  border-radius: 30px;
+  font: 0.7em bold;
+  color: black
+`;
+
 const  Styledtitle = styled.label`
   margin : 2.5em 0 5em 3em;
   font-weight: bold;
@@ -82,4 +95,34 @@ const Progress_span = styled.span<{ data_progress: number, wcolor: string}>`
   padding-left: 5px;
 `;
 
-export {StyleDiv2, StyledScore, Styledtitle, StyledOption, StyledDiv, Styledp, Animate_progress, Progress_span};
+const StyledTimer = styled.div`
+  font-family: "Montserrat";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2em;
+`
+
+const AdminButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${colors.pointSub2};
+  margin: 0 0 1em 0;
+  width: 40%;
+  height: 2.5em;
+  border-radius: 10px;
+  font: 0.7em bold;
+  color: white;
+  font-weight: bold;
+`
+
+const StyledDiv3 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 60%;
+`;
+
+export {StyleDiv2, StyledScore, StyledDiv3, AdminButton, StyledTimer, Styledtitle, StyledOption, StyledDiv, Styledp, Animate_progress, Progress_span, StyledOption2};
