@@ -12,20 +12,8 @@ type HamletProps = {
 // questionId, kinds, point, time, orders, multiple, contents, options
 const Quiz = ({ quiz, parentCallback} : HamletProps) => { // quiz : question
   const { questionId, kinds,  time, orders, multiple, contents, options, point} = quiz;
-  const [ isSelected, setSelected ] = useState<boolean>(false);
-  const [ isSelected2, setSelected2] = useState<boolean>(false);
   const [ isResult, setResult ] = useState<boolean>(false);
   const [ isAdmin, setAdmin ] = useState<boolean>(true);
-
-  // var option, option2;
-
-  // const dis = () => {
-  //   for(let i = 0; i < options.length; i++){
-  //     if (i === 0) {option = options[i]}
-  //     else if (i === 1) { option2 = options[i]}
-  //   }
-  // }
-
 
   const renderTime = ({ remainingTime }:any) => {
     return (
@@ -36,11 +24,7 @@ const Quiz = ({ quiz, parentCallback} : HamletProps) => { // quiz : question
   const selectAnswer = () => {
     setResult(true);
   }
-
-  // useEffect(() => {
-  //   parentCallback();
-  // },[])
-
+  
   return(
     <>
     {isResult ? 

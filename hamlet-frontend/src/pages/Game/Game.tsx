@@ -11,7 +11,7 @@ import Participant from '../../components/Participant/Participant';
 import ParticipantAdmin from '../../components/Participant/ParticipantAdmin';
 import axios from 'axios';
 import { StyledLogo, StyledApp, StyledRoom } from './styles';
-import Result from '../../components/Problem/Result/Result';
+import Result from '../Result/Result';
 
 
 const Game = ()  => { // myQs : question[]
@@ -24,7 +24,6 @@ const Game = ()  => { // myQs : question[]
   }, []);
 
   const onData = async() => {
-    console.log('렌더링')
     var config = {
       method: 'get',
       url: `/questions/${hamletId}`,
@@ -87,25 +86,6 @@ const Game = ()  => { // myQs : question[]
       }
     </>
   );
-  // {hamletdata.map((hamletarr: hamlet2) => {
-  //   if (hamletarr.kinds === 0){
-  //     return <Quiz quiz={hamletarr} />
-  //   } else if (hamletarr.kinds === 1){
-  //     return <Poll poll={hamletarr}  />
-  //   } else if (hamletarr.kinds === 2){
-  //     return <Subjective subjective={hamletarr} />
-  //   } else if (hamletarr.kinds === 3){
-  //     return <Survey survey={hamletarr} />
-  //   }
-  // })}
-
-  // return (
-  //   <StyledApp>
-  //     <StyledRoom>
-  //       <StyledLogo src={logo} alt="logo" />
-  //     </StyledRoom>
-  //   </StyledApp>
-  // );
 }
 
 export default Game;

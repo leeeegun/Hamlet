@@ -1,8 +1,12 @@
-import { question,hamlet2 } from '../../../types';
-import { useState,useEffect } from 'react'
-import { StyledDiv, StyledScore, StyledDiv3, AdminButton,Styledtitle, StyledTimer, StyleDiv2, StyledOption, Styledp, Progress_span, Animate_progress } from './styles';
+import { useState } from 'react';
+import { question, hamlet2 } from '../../../types';
+import styled from "styled-components";
+import { colors } from '../../../styles/style';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-import Waiting from '../Waiting/Waiting';
+import { Router } from 'react-router-dom';
+import { render } from '@testing-library/react';
+import ReactWordcloud from 'react-wordcloud';
+import { StyledDiv, Styledtitle, StyleDiv2, StyledTimer, StyledScore,  Styledp, StyledOption, Animate_progress, Progress_span, StyledDiv3, AdminButton } from './styles';
 
 type HamletProps = {
   poll: hamlet2,
@@ -10,12 +14,8 @@ type HamletProps = {
 }
 
 
-const Poll = ({poll, parentCallback} : HamletProps) => { // survey : question
+const Poll = ({poll, parentCallback} : HamletProps) => { 
   const { questionId, kinds, time, orders, multiple, contents, options} = poll;
-  const [ isSelected, setSelected ] = useState<boolean>(false);
-  const [ isSelected2, setSelected2] = useState<boolean>(false);
-  const [ isSelected3, setSelected3] = useState<boolean>(false);
-  const [ isSelected4, setSelected4] = useState<boolean>(false);
   const [ isResult, setResult ] = useState<boolean>(false);
   const [ isAdmin, setAdmin ] = useState<boolean>(true);
   //background-color: ${props => props.selected? colors.pointSub2 : colors.bgDark};
@@ -107,10 +107,10 @@ const Poll = ({poll, parentCallback} : HamletProps) => { // survey : question
             <StyledScore>-</StyledScore>
             <Styledtitle>{contents}</Styledtitle>
           </StyleDiv2>
-          <StyledOption selected={isSelected} onClick={(): void=> {selectAnswer()}}>{options[0].contents}</StyledOption>
-          <StyledOption selected={isSelected2} onClick={(): void=> {selectAnswer()}}>{options[1].contents}</StyledOption>
-          <StyledOption selected={isSelected3} onClick={(): void=> {selectAnswer()}}>{options[2].contents}</StyledOption>
-          <StyledOption selected={isSelected4} onClick={(): void=> {selectAnswer()}}>{options[3].contents}</StyledOption>
+          <StyledOption onClick={(): void=> {selectAnswer()}}>{options[0].contents}</StyledOption>
+          <StyledOption onClick={(): void=> {selectAnswer()}}>{options[1].contents}</StyledOption>
+          <StyledOption onClick={(): void=> {selectAnswer()}}>{options[2].contents}</StyledOption>
+          <StyledOption onClick={(): void=> {selectAnswer()}}>{options[3].contents}</StyledOption>
         </StyledDiv>
         <StyledDiv3>
           <AdminButton onClick={(): void=>{selectAnswer()}}>
@@ -132,10 +132,10 @@ const Poll = ({poll, parentCallback} : HamletProps) => { // survey : question
             <StyledScore>-</StyledScore>
             <Styledtitle>{contents}</Styledtitle>
           </StyleDiv2>
-          <StyledOption selected={isSelected} onClick={(): void=> {selectAnswer()}}>{options[0].contents}</StyledOption>
-          <StyledOption selected={isSelected2} onClick={(): void=> {selectAnswer()}}>{options[1].contents}</StyledOption>
-          <StyledOption selected={isSelected3} onClick={(): void=> {selectAnswer()}}>{options[2].contents}</StyledOption>
-          <StyledOption selected={isSelected4} onClick={(): void=> {selectAnswer()}}>{options[3].contents}</StyledOption>
+          <StyledOption onClick={(): void=> {selectAnswer()}}>{options[0].contents}</StyledOption>
+          <StyledOption onClick={(): void=> {selectAnswer()}}>{options[1].contents}</StyledOption>
+          <StyledOption onClick={(): void=> {selectAnswer()}}>{options[2].contents}</StyledOption>
+          <StyledOption onClick={(): void=> {selectAnswer()}}>{options[3].contents}</StyledOption>
         </StyledDiv>
       </>
     }
