@@ -1,6 +1,6 @@
 import { question,hamlet2 } from '../../../types';
 import { useState } from 'react'
-import { StyledDiv, StyledScore, Styledtitle, StyledTimer, StyleDiv2, StyledOption, Styledp, Progress_span, Animate_progress, StyledOption2 } from './styles';
+import { StyledDiv, StyledScore, Styledtitle, StyledTimer, StyleDiv2, StyledOption, Styledp, Progress_span, Animate_progress, StyledOption2 } from '../Poll/styles';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import Waiting from '../Waiting/Waiting';
 

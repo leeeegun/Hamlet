@@ -31,6 +31,4 @@ interface hamlet2{
     point : number;
 }
 
-
-
 export type { QuestionType, question, hamlet, hamlet2, Options };

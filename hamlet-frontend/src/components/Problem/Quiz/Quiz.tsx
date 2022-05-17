@@ -15,7 +15,7 @@ const Quiz = ({ quiz, parentCallback} : HamletProps) => { // quiz : question
   const [ isSelected, setSelected ] = useState<boolean>(false);
   const [ isSelected2, setSelected2] = useState<boolean>(false);
   const [ isResult, setResult ] = useState<boolean>(false);
-  const [ isAdmin, setAdmin ] = useState<boolean>(false);
+  const [ isAdmin, setAdmin ] = useState<boolean>(true);
 
   // var option, option2;
 
@@ -33,13 +33,13 @@ const Quiz = ({ quiz, parentCallback} : HamletProps) => { // quiz : question
     );
   };
 
-  const answer = () =>  {
-    setSelected(true);
+  const selectAnswer = () => {
+    setResult(true);
   }
 
-  useEffect(() => {
-    parentCallback();
-  },[isSelected])
+  // useEffect(() => {
+  //   parentCallback();
+  // },[])
 
   return(
     <>
@@ -61,7 +61,7 @@ const Quiz = ({ quiz, parentCallback} : HamletProps) => { // quiz : question
           </Animate_progress>
        </StyledDiv>
         <StyledDiv3>
-          <AdminButton>
+          <AdminButton onClick={(): void=> parentCallback()}>
             다음 문제 풀기
           </AdminButton>
         </StyledDiv3>
@@ -90,22 +90,23 @@ const Quiz = ({ quiz, parentCallback} : HamletProps) => { // quiz : question
               colorsTime={[10, 6, 3, 0]}
               onComplete={ () => setResult(!isResult)}
             >{renderTime}</CountdownCircleTimer>
-          <StyledDiv>
-            <StyleDiv2>
-              <StyledScore>{point}</StyledScore>
-              <Styledtitle>{contents}</Styledtitle>
-            </StyleDiv2>
-            <StyledOption selected={isSelected} onClick={(): void=> {answer()}}>{options[0].contents}</StyledOption>
-            <StyledOption selected={isSelected2} onClick={(): void=> {answer()}}>{options[1].contents}</StyledOption>
-          </StyledDiv>
-          <StyledDiv3>
-            <AdminButton>
-              Skip
-            </AdminButton>
-            <AdminButton>
-              정답공개
-            </AdminButton>
-          </StyledDiv3>
+            <StyledDiv>
+              <StyleDiv2>
+                <StyledScore>{point}</StyledScore>
+                <Styledtitle>{contents}</Styledtitle>
+              </StyleDiv2>
+              <StyledOption onClick={(): void=> {selectAnswer()}}>{options[0].contents}</StyledOption>
+              <br/>
+              <StyledOption onClick={(): void=> {selectAnswer()}}>{options[1].contents}</StyledOption>
+            </StyledDiv>
+            <StyledDiv3>
+              <AdminButton onClick={(): void=>{selectAnswer()}}>
+                Skip
+              </AdminButton>
+              <AdminButton>
+                정답공개
+              </AdminButton>
+            </StyledDiv3>
       </>
     :
       <>
@@ -121,8 +122,9 @@ const Quiz = ({ quiz, parentCallback} : HamletProps) => { // quiz : question
             <StyledScore>{point}</StyledScore>
             <Styledtitle>{contents}</Styledtitle>
           </StyleDiv2>
-          <StyledOption selected={isSelected} onClick={(): void=> {answer()}}>{options[0].contents}</StyledOption>
-          <StyledOption selected={isSelected2} onClick={(): void=> {answer()}}>{options[1].contents}</StyledOption>
+          <StyledOption onClick={(): void=> {selectAnswer()}}>{options[0].contents}</StyledOption>
+          <br/>
+          <StyledOption onClick={(): void=> {selectAnswer()}}>{options[1].contents}</StyledOption>
         </StyledDiv>
       </>
     }

@@ -1,75 +1,92 @@
-import { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState,  useLayoutEffect } from 'react';
 import logo from '../../images/logo.png';
 import { question, hamlet2 } from '../../types';
 import Quiz from '../../components/Problem/Quiz/Quiz';
 import Problem from '../../components/Problem/Problem';
-import Poll from '../../components/Problem/Poll/Poll';
 import Survey from '../../components/Problem/Survey/Survey';
+import Poll from '../../components/Problem/Poll/Poll';
 import Subjective from '../../components/Problem/Subjective/Subjective';
 import ConrrectAnswer from '../../components/Problem/Result/CorrectAnswer';
-import Result from '../../components/Problem/Result/Result';
-import styled from 'styled-components';
 import Participant from '../../components/Participant/Participant';
 import ParticipantAdmin from '../../components/Participant/ParticipantAdmin';
 import axios from 'axios';
 import { StyledLogo, StyledApp, StyledRoom } from './styles';
+import Result from '../../components/Problem/Result/Result';
 
 
 const Game = ()  => { // myQs : question[]
-  const [hamletdata, sethamletdata] = useState<hamlet2[]>([]);
-  const [currenthamlet, setcurrent] = useState<any>();
-  const [isclicked, setclikced] = useState<boolean>(false);
-  const hamletId = 0;
-  var i = 0;
-  
-  useEffect(()=>{
+  const [hamletdata, sethamletdata] = useState<any>([]);
+  const [currenthamlet, setcurrent] = useState<any>([]);
+  const hamletId = 3;
+
+  useLayoutEffect(()=>{
     onData();
   }, []);
 
-  useEffect(()=>{
-    change();
-  }, [isclicked]);
-  
   const onData = async() => {
+    console.log('렌더링')
     var config = {
       method: 'get',
       url: `/questions/${hamletId}`,
     };
+
     try{
       const data = await axios(config);
+      localStorage.setItem('index',"0");
       sethamletdata(data.data);
-      setcurrent(hamletdata[0]);
+      setcurrent(data.data[0]);
     }catch(err){
       console.error(err);
     }
   }
 
-  
-  const change = () => {
-    setcurrent(hamletdata[i]);
-    i ++;
-  }
-
-  const handleCallback = useCallback(() =>{
-    setclikced(!isclicked);
-  },[isclicked]);
+  const handleCallback = () =>{
+    var indexdata = localStorage.getItem('index')
+    var indexdata2 = Number(indexdata);
+    indexdata2 = indexdata2 + 1;
+    localStorage.setItem("index",String(indexdata2))
+    setcurrent(hamletdata[indexdata2]);
+  };
 
   return (
-    <StyledApp>
-      <StyledRoom>
-        <StyledLogo src={logo} alt="logo" />
-        if (currenthamlet.kinds === 0){
-          <Quiz parentCallback={handleCallback} quiz={currenthamlet} />
-        } else if (currenthamlet.kinds === 1){
-          <Poll poll={currenthamlet} />
-        } else if (currenthamlet.kinds === 0){
-          <Subjective subjective={currenthamlet} />
-        } else {
-          <Survey survey={currenthamlet} />
-        }
-      </StyledRoom>
-    </StyledApp>
-  )
+    <>
+      {
+        currenthamlet ?
+        <StyledApp>
+          <StyledRoom>
+            <StyledLogo src={logo} alt="logo" />
+            {
+              currenthamlet.kinds === 1
+              &&
+              <Quiz parentCallback={handleCallback} quiz={currenthamlet}/>
+            }
+            {
+              currenthamlet.kinds === 2
+              &&
+              <Subjective parentCallback={handleCallback} subjective={currenthamlet}/>
+            } 
+            {
+              currenthamlet.kinds === 3
+              &&
+              <Poll parentCallback={handleCallback}   poll={currenthamlet}/>
+            }
+            {
+              currenthamlet.kinds === 4
+              &&
+              <Survey parentCallback={handleCallback} survey={currenthamlet}/>
+            }
+          </StyledRoom>
+        </StyledApp>
+        :
+        <StyledApp>
+          <StyledRoom>
+            <StyledLogo src={logo} alt="logo" />
+            <Result />
+          </StyledRoom>
+        </StyledApp>
+      }
+    </>
+  );
   // {hamletdata.map((hamletarr: hamlet2) => {
   //   if (hamletarr.kinds === 0){
   //     return <Quiz quiz={hamletarr} />

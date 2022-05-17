@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { question, hamlet2 } from '../../../types';
 import styled from "styled-components";
 import { colors } from '../../../styles/style';
@@ -6,19 +6,30 @@ import { StyledDiv, StyleDiv2, StyledDiv3, StyledTimer, StyledScore, Styledtitle
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 type HamletProps = {
-  subjective: hamlet2
+  subjective: hamlet2,
+  parentCallback: () => void,
 }
 
-const Subjective = ({subjective} : HamletProps) => { // poll : question
+const Subjective = ({ subjective, parentCallback} : HamletProps) => { // poll : question
   const { questionId, kinds,  time, orders, multiple, contents, point} = subjective;
+  const [ isSelected, setSelected ] = useState<boolean>(false);
   const [ isResult, setResult ] = useState<boolean>(false);
-  const [ isAdmin, setAdmin ] = useState<boolean>(false);
+  const [ isAdmin, setAdmin ] = useState<boolean>(true);
 
   const renderTime = ({ remainingTime }:any) => {
     return (
       <StyledTimer>{remainingTime}</StyledTimer>
     );
   };
+
+  // useEffect(() => {
+  //   parentCallback();
+  // },[isSelected])
+
+  const selectAnswer = () => {
+    setResult(true);
+  }
+
   return(
     <>
     {isResult ? 
@@ -32,7 +43,7 @@ const Subjective = ({subjective} : HamletProps) => { // poll : question
               <StyledResult>답출력</StyledResult>
             </StyledDiv>
             <StyledDiv3>
-                <AdminButton>
+                <AdminButton onClick={(): void=> parentCallback()}>
                   다음 문제 풀기
                 </AdminButton>
               </StyledDiv3>
@@ -62,7 +73,7 @@ const Subjective = ({subjective} : HamletProps) => { // poll : question
           <StyledInput placeholder='입력하세요'/>
         </StyledDiv>
         <StyledDiv3>
-          <AdminButton>
+          <AdminButton onClick={():void=>selectAnswer()}>
             Skip
           </AdminButton>
           <AdminButton>

@@ -14,17 +14,17 @@ const StyledDiv = styled.div`
   border-radius: 10px;
 `;
 
-const StyledOption = styled.button<{ selected: boolean }>`
+const StyledOption = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${props => props.selected? colors.pointSub2 : colors.bgDark};
+  background-color: colors.pointSub2
   margin: 0 0 1em 0;
   width: 40%;
   height: 2.5em;
   border-radius: 50px;
   font: 0.7em bold;
-  color: ${props => props.selected? "white" : "black" };
+  color: "black";
 `;
 
 const  Styledtitle = styled.label`
@@ -52,7 +52,7 @@ const StyleDiv2 = styled.div`
   display: flex;
   justify-content: flex-start;
   align-content: center;
-  width: 90%;  
+  width: 90%;
 `;
 
 const Animate_progress = styled.div`

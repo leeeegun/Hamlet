@@ -1,8 +1,13 @@
-import { question,hamlet2 } from '../../../types';
-import { useState,useEffect } from 'react'
-import { StyledDiv, StyledScore, StyledDiv3, AdminButton,Styledtitle, StyledTimer, StyleDiv2, StyledOption, Styledp, Progress_span, Animate_progress } from './styles';
+import { useState, useEffect } from 'react';
+import { question, hamlet2 } from '../../../types';
+import styled from "styled-components";
+import { colors } from '../../../styles/style';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-import Waiting from '../Waiting/Waiting';
+import { Router } from 'react-router-dom';
+import { render } from '@testing-library/react';
+import ReactWordcloud from 'react-wordcloud';
+import { StyledDiv, Styledtitle, StyleDiv2, StyledTimer, StyledScore, StyledInput, StyledDiv3, AdminButton } from './styles';
+
 
 type HamletProps = {
   survey: hamlet2,
@@ -10,144 +15,137 @@ type HamletProps = {
 }
 
 
-const Survey = ({survey, parentCallback} : HamletProps) => { // survey : question
-  const { questionId, kinds, time, orders, multiple, contents, options} = survey;
-  const [ isSelected, setSelected ] = useState<boolean>(false);
-  const [ isSelected2, setSelected2] = useState<boolean>(false);
-  const [ isSelected3, setSelected3] = useState<boolean>(false);
-  const [ isSelected4, setSelected4] = useState<boolean>(false);
-  const [ isResult, setResult ] = useState<boolean>(false);
-  const [ isAdmin, setAdmin ] = useState<boolean>(false);
-  //background-color: ${props => props.selected? colors.pointSub2 : colors.bgDark};
-  // color: ${props => props.selected? "white" : "black" };
 
-  const renderTime = ({ remainingTime }: any) => {
+const Survey = ({survey, parentCallback} : HamletProps) => { 
+  const { questionId, kinds, time, orders, multiple, contents} = survey;
+  const [ isResult, setResult ] = useState<boolean>(false);
+  const [ isAdmin, setAdmin ] = useState<boolean>(true);
+  const [ isSelected, setSelected ] = useState<boolean>(false);
+  
+
+  const words = [
+    {
+      text: '정답123',
+      value: 16,
+    },
+    {
+      text: '정답1234',
+      value: 17,
+    },
+    {
+      text: '정답1',
+      value: 64,
+    },
+    {
+      text: '정답12',
+      value: 11,
+    },
+    {
+      text: '정답123',
+      value: 16,
+    },
+    {
+      text: '정답1234',
+      value: 17,
+    },
+    {
+      text: '정답1',
+      value: 64,
+    },
+    {
+      text: '정답12',
+      value: 11,
+    },
+    {
+      text: '정답123',
+      value: 16,
+    },
+    {
+      text: '정답1234',
+      value: 17,
+    },
+  ]
+
+  const options: any = {
+    fontSizes : [30,60],
+  }
+
+  const selectAnswer = () => {
+    setResult(true);
+  }
+
+  // useEffect(() => {
+  //   parentCallback();
+  // },[isSelected])
+
+  const renderTime = ({ remainingTime }:any) => {
     return (
       <StyledTimer>{remainingTime}</StyledTimer>
     );
   };
 
-  const waiting = ({ remainingTime }: any) => {
-    return (
-      <Waiting></Waiting>
-    );
-  }
-  
-  const answer = () => {
-    setSelected(true);
-  }
 
-  useEffect(() => {
-    parentCallback();
-  },[isSelected])
-  
   return(
     <>
-    {isResult ? 
-      isAdmin ?
-        <>
+      {isResult ? 
+          isAdmin ?
+          <>
+            <StyledDiv>
+              <Styledtitle>contents</Styledtitle>
+              <ReactWordcloud words={words} options={options} /> 
+            </StyledDiv>
+            <StyledDiv3>
+              <AdminButton onClick={(): void=> parentCallback()}>
+                다음 문제 풀기
+              </AdminButton>
+            </StyledDiv3>
+          </>
+          :
           <StyledDiv>
-            <StyleDiv2>
-              <StyledScore>-</StyledScore>
-              <Styledtitle>{contents}</Styledtitle>
-            </StyleDiv2>
-            <Styledp>{options[0].contents}</Styledp>
-            <Animate_progress>
-              <Progress_span data_progress={72} wcolor={"blue"}></Progress_span>
-            </Animate_progress>
-            <Styledp>{options[1].contents}</Styledp>
-            <Animate_progress>
-              <Progress_span data_progress={13} wcolor={"red"}></Progress_span>
-            </Animate_progress>
-            <Styledp>{options[2].contents}</Styledp>
-            <Animate_progress>
-              <Progress_span data_progress={8} wcolor={"purple"}></Progress_span>
-            </Animate_progress>
-            <Styledp>{options[3].contents}</Styledp>
-            <Animate_progress>
-              <Progress_span data_progress={7} wcolor={"green"}></Progress_span>
-            </Animate_progress>
-            <br/>
+            <Styledtitle>contents</Styledtitle>
+            <ReactWordcloud words={words} options={options} /> 
           </StyledDiv>
-          <StyledDiv3>
-            <AdminButton>
-              다음 문제 풀기
-            </AdminButton>
-          </StyledDiv3>
-        </>
-      :
-        <StyledDiv>
-          <StyleDiv2>
-            <StyledScore>-</StyledScore>
-            <Styledtitle>{contents}</Styledtitle>
-          </StyleDiv2>
-          <Styledp>{options[0].contents}</Styledp>
-          <Animate_progress>
-            <Progress_span data_progress={72} wcolor={"blue"}></Progress_span>
-          </Animate_progress>
-          <Styledp>{options[1].contents}</Styledp>
-          <Animate_progress>
-            <Progress_span data_progress={13} wcolor={"red"}></Progress_span>
-          </Animate_progress>
-          <Styledp>{options[2].contents}</Styledp>
-          <Animate_progress>
-            <Progress_span data_progress={8} wcolor={"purple"}></Progress_span>
-          </Animate_progress>
-          <Styledp>{options[3].contents}</Styledp>
-          <Animate_progress>
-            <Progress_span data_progress={7} wcolor={"green"}></Progress_span>
-          </Animate_progress>
-          <br/>
-        </StyledDiv>
-    : isAdmin ? 
-      <>
-        <CountdownCircleTimer
-            isPlaying
-            duration={time}
-            colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-            colorsTime={[10, 6, 3, 0]}
-            onComplete={ () => setResult(!isResult)}
-          >{renderTime}</CountdownCircleTimer>
-        <StyledDiv>
-          <StyleDiv2>
-            <StyledScore>-</StyledScore>
-            <Styledtitle>{contents}</Styledtitle>
-          </StyleDiv2>
-          <StyledOption selected={isSelected} onClick={(): void=> {answer()}}>{options[0].contents}</StyledOption>
-          <StyledOption selected={isSelected2} onClick={(): void=> {answer()}}>{options[1].contents}</StyledOption>
-          <StyledOption selected={isSelected3} onClick={(): void=> {answer()}}>{options[2].contents}</StyledOption>
-          <StyledOption selected={isSelected4} onClick={(): void=> {answer()}}>{options[3].contents}</StyledOption>
-        </StyledDiv>
-        <StyledDiv3>
-          <AdminButton>
-            Skip
-          </AdminButton>
-          <AdminButton>
-            정답공개
-          </AdminButton>
-        </StyledDiv3>
-      </>
-    :
-      <>
-        <CountdownCircleTimer
-            isPlaying
-            duration={time}
-            colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-            colorsTime={[10, 6, 3, 0]}
-            onComplete={ () => setResult(!isResult)}
-          >{renderTime}</CountdownCircleTimer>
-        <StyledDiv>
-          <StyleDiv2>
-            <StyledScore>-</StyledScore>
-            <Styledtitle>{contents}</Styledtitle>
-          </StyleDiv2>
-          <StyledOption selected={isSelected} onClick={(): void=> {answer()}}>{options[0].contents}</StyledOption>
-          <StyledOption selected={isSelected2} onClick={(): void=> {answer()}}>{options[1].contents}</StyledOption>
-          <StyledOption selected={isSelected3} onClick={(): void=> {answer()}}>{options[2].contents}</StyledOption>
-          <StyledOption selected={isSelected4} onClick={(): void=> {answer()}}>{options[3].contents}</StyledOption>
-        </StyledDiv>
-      </>
-    }
+        :
+          isAdmin ? 
+          <>
+            <CountdownCircleTimer
+              isPlaying
+              duration={time}
+              colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+              colorsTime={[10, 6, 3, 0]}
+              onComplete={ () => setResult(!isResult)}
+            >{renderTime}</CountdownCircleTimer>
+            <StyledDiv>
+              <StyleDiv2>
+                <StyledScore>-</StyledScore>
+                <Styledtitle>{contents}</Styledtitle>
+              </StyleDiv2>
+              <StyledInput placeholder='입력하세요'/>
+            </StyledDiv>
+            <StyledDiv3>
+              <AdminButton onClick={(): void => selectAnswer()}>
+                Skip
+              </AdminButton>
+            </StyledDiv3>
+          </>
+          : 
+            <>
+              <CountdownCircleTimer
+                isPlaying
+                duration={time}
+                colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+                colorsTime={[10, 6, 3, 0]}
+                onComplete={ () => setResult(!isResult)}
+              >{renderTime}</CountdownCircleTimer>
+              <StyledDiv>
+                <StyleDiv2>
+                  <StyledScore>-</StyledScore>
+                  <Styledtitle>{contents}</Styledtitle>
+                </StyleDiv2>
+                <StyledInput placeholder='입력하세요'/>
+              </StyledDiv>
+            </>
+      }
     </>
   );
 }
