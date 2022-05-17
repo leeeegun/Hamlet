@@ -82,4 +82,12 @@ const Progress_span = styled.span<{ data_progress: number, wcolor: string}>`
   padding-left: 5px;
 `;
 
-export {StyleDiv2, StyledScore, Styledtitle, StyledOption, StyledDiv, Styledp, Animate_progress, Progress_span};
+const StyledTimer = styled.div`
+  font-family: "Montserrat";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2em;
+`
+
+export {StyleDiv2, StyledScore, StyledTimer, Styledtitle, StyledOption, StyledDiv, Styledp, Animate_progress, Progress_span};

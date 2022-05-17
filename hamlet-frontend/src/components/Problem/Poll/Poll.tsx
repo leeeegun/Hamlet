@@ -1,14 +1,17 @@
 import { useState } from 'react';
-import { question } from '../../../types';
+import { question, hamlet2 } from '../../../types';
 import styled from "styled-components";
 import { colors } from '../../../styles/style';
-import Timer from '../../Timer/Timer';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import { Router } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import ReactWordcloud from 'react-wordcloud';
-import { StyledDiv, Styledtitle, StyleDiv2, StyledScore, StyledInput, StyledDiv3, AdminButton } from './styles';
+import { StyledDiv, Styledtitle, StyleDiv2, StyledTimer, StyledScore, StyledInput, StyledDiv3, AdminButton } from './styles';
 
+
+type HamletProps = {
+  poll: hamlet2
+}
 
 // 관리자 문제화면
 {/* <StyledDiv3>
@@ -27,8 +30,7 @@ import { StyledDiv, Styledtitle, StyleDiv2, StyledScore, StyledInput, StyledDiv3
       </AdminButton>
     </StyledDiv3> */}
 
-const Poll = () => { // poll : question
-  // const { q, type, time, choices} = poll;
+const Poll = () => { 
   const [ isResult, setResult ] = useState<boolean>(false);
 
   const words = [
@@ -150,11 +152,16 @@ const Poll = () => { // poll : question
     fontSizes : [30,60],
   }
 
+  const renderTime = ({ remainingTime }:any) => {
+    return (
+      <StyledTimer>{remainingTime}</StyledTimer>
+    );
+  };
   return(
     <>
       {isResult ? 
       <StyledDiv>
-        <Styledtitle>hi</Styledtitle>
+        <Styledtitle>contents</Styledtitle>
         <ReactWordcloud words={words} options={options} /> 
       </StyledDiv>  
         :
@@ -165,13 +172,11 @@ const Poll = () => { // poll : question
         colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
         colorsTime={[10, 6, 3, 0]}
         onComplete={ () => setResult(!isResult)}
-      ></CountdownCircleTimer>
+      >{renderTime}</CountdownCircleTimer>
       <StyledDiv>
         <StyleDiv2>
-          <StyledScore>20</StyledScore>
-          <Styledtitle>투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표
-          투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표투표
-          </Styledtitle>
+          <StyledScore>-</StyledScore>
+          <Styledtitle>Poll</Styledtitle>
         </StyleDiv2>
         <StyledInput placeholder='입력하세요'/>
       </StyledDiv>
