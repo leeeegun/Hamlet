@@ -21,3 +21,21 @@
 .App-link {
   color: #61dafb;
 }
+
+.hide {
+  display: none;
+}
+
+.valid {
+  display: block;
+}
+
+.invalid {
+  display: block;
+}
+
+@font-face {
+  font-family: "gangwonBold";
+  font-weight: 50;
+  src: url("./fonts/gangwonBold.ttf") format("truetype");
+}
