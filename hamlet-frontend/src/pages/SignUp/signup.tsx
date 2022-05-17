@@ -250,6 +250,7 @@ function Signup() {
         html: "이제부터 모든 기능을 사용할 수 있어요!",
         icon: "success",
       });
+      navigate("/");
     }
     if (successMessage.statusCode === 400) {
       Swal.fire({

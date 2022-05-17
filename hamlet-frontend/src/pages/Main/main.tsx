@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import logo from '../../images/logo.png';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 const StyledInput = styled.input`
   width: 20rem;
@@ -39,6 +39,16 @@ const StyledLink = styled(Link)`
 
 
 const Main = () => {
+
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      navigate("/admin");
+    }
+  }, []);
+
+
   return(
     <StyledApp>
       <StyledHeader>
