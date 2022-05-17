@@ -2,7 +2,6 @@ import React, { useEffect, useState,  useLayoutEffect } from 'react';
 import logo from '../../images/logo.png';
 import { question, hamlet2 } from '../../types';
 import Quiz from '../../components/Problem/Quiz/Quiz';
-import Problem from '../../components/Problem/Problem';
 import Survey from '../../components/Problem/Survey/Survey';
 import Poll from '../../components/Problem/Poll/Poll';
 import Subjective from '../../components/Problem/Subjective/Subjective';

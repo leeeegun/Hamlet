@@ -81,9 +81,4 @@ const StyledTimer = styled.div`
   align-items: center;
   font-size: 2em;
 `
-<<<<<<< HEAD
 export { StyleDiv2, StyledScore, StyledTimer, StyledInput, Styledtitle, StyledDiv, AdminButton, StyledDiv3};
-=======
-
-export {StyleDiv2, StyledScore, StyledTimer, Styledtitle, StyledOption, StyledDiv, Styledp, Animate_progress, Progress_span};
->>>>>>> ccf6b829d44de4560c808b3174081251a38f65a6

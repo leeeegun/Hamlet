@@ -11,8 +11,7 @@ import Admin from './pages/Admin/Admin';
 import { question } from './types';
 import Quiz from './components/Problem/Quiz/Quiz';
 import MainforPlayer from './pages/Main/MainforPlayer';
-import Survey2 from './components/Problem/Survey/Survey2';
-import Problem from './components/Problem/Problem';
+// import Problem from './components/Problem/Problem';
 
 function App() {
   return (
@@ -23,9 +22,7 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/Signup" element={<Signup/>} />
         <Route path="/WaitingRoomPlayer" element={<WaitingRoomPlayer/>} />
-        <Route path="/Problem" element={<Problem />} />
         <Route path="/admin" element={<Admin/>} />
-        <Route path="/survey" element={<Survey2 />} />
         <Route path="/Game" element={<Game />} />
       </Routes>
     </BrowserRouter>
