@@ -14,22 +14,19 @@ const StyledDiv = styled.div`
   border-radius: 10px;
 `;
 
-const StyledOption = styled.button<{ selected: boolean }>` 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: ${props => props.selected? colors.pointSub2 : colors.bgDark};
-    margin: 0 0 1em 0;
-    width: 40%;
-    height: 2.5em;
-    border-radius: 30px;
-    font: 0.7em bold;
-    color: black
-  `;
-
 const  Styledtitle = styled.label`
   margin : 2.5em 0 5em 3em;
   font-weight: bold;
+`;
+
+const StyledInput = styled.input`
+  background-color: ${ colors.bgDark };
+  margin: 0 0 1em 0;
+  width: 50%;
+  height: 2em;
+  border-radius: 15px;
+  font: 1em bold;
+  color: black;
 `;
 
 const StyledScore = styled.div`
@@ -46,40 +43,35 @@ const StyledScore = styled.div`
   margin : 2em 0 5em 0;
   color: white;
   font-weight: bold;
-`;  
+`;
 
 const StyleDiv2 = styled.div`
   display: flex;
   justify-content: flex-start;
   align-content: center;
-  width: 90%;
+  width: 90%;  
 `;
 
-const Styledp = styled.p`
+const AdminButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${colors.pointSub2};
+  margin: 0 0 1em 0;
+  width: 40%;
+  height: 2.5em;
+  border-radius: 10px;
+  font: 0.7em bold;
+  color: white;
   font-weight: bold;
 `
 
-const Animate_progress = styled.div`
-  width: 50%;
-  height: 4vh;
-  margin: 20px 10px;
-  border: 1px solid rgb(189, 113, 113);
-  overflow: hidden;
-  position: relative;
-  border-radius: 20px;
-  margin : 0 0 0 0;
-`;
-
-const Progress_span = styled.span<{ data_progress: number, wcolor: string}>`
-  height: 100%;
-  display: block;
-  width: ${props => props.data_progress}%;
-  color: rgb(255, 251, 251);
-  background-color: ${props => props.wcolor === 'green' ? "green" : props.wcolor === 'red' ? "red" : props.wcolor === 'blue' ? "blue" : "purple" };
-  line-height: 30px;
-  position: absolute;
-  text-align: start;
-  padding-left: 5px;
+const StyledDiv3 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 60%;
 `;
 
 const StyledTimer = styled.div`
@@ -89,5 +81,4 @@ const StyledTimer = styled.div`
   align-items: center;
   font-size: 2em;
 `
-
-export {StyleDiv2, StyledScore, StyledTimer, Styledtitle, StyledOption, StyledDiv, Styledp, Animate_progress, Progress_span};
+export { StyleDiv2, StyledScore, StyledTimer, StyledInput, Styledtitle, StyledDiv, AdminButton, StyledDiv3};

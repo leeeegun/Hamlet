@@ -1,7 +1,4 @@
-import styled from 'styled-components';
-import {colors} from '../../../styles/style';
 import {StyledDivCorrectAnswer, StyledDiv2, StyledDiv3} from './styles';
-
 
 const ConrrectAnswer = () => {
   return(
