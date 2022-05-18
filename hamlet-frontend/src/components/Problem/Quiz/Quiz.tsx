@@ -75,7 +75,7 @@ const Quiz = ({ quiz, parentCallback} : HamletProps) => {
               <>
                 <StyledDiv>
                   <StyleDiv2>
-                    <StyledScore>20</StyledScore>
+                    <StyledScore>{point}</StyledScore>
                     <Styledtitle>{contents}</Styledtitle>
                   </StyleDiv2>
                   <p>{options[0].contents}</p>
@@ -100,7 +100,7 @@ const Quiz = ({ quiz, parentCallback} : HamletProps) => {
                     result ?
                       <>
                         <StyleDiv2>
-                          <StyledScore>20</StyledScore>
+                          <StyledScore>{point}</StyledScore>
                           <Styledtitle>{contents}</Styledtitle>
                         </StyleDiv2>
                         <p>{options[0].contents}</p>
@@ -121,7 +121,7 @@ const Quiz = ({ quiz, parentCallback} : HamletProps) => {
                     result ?
                       <>
                         <StyleDiv2>
-                          <StyledScore>20</StyledScore>
+                          <StyledScore>{point}</StyledScore>
                           <Styledtitle>{contents}</Styledtitle>
                         </StyleDiv2>
                         <p>{options[0].contents}</p>

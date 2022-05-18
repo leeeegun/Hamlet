@@ -1,5 +1,3 @@
-import React from 'react';
-// import logo from './logo.png';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from './pages/Main/main';
@@ -8,10 +6,7 @@ import Signup from './pages/SignUp/signup';
 import WaitingRoomPlayer from './pages/WaitingRoomPlayer/WaitingRoomPlayer';
 import Game from './pages/Game/Game';
 import Admin from './pages/Admin/Admin';
-import { question } from './types';
-import Quiz from './components/Problem/Quiz/Quiz';
 import MainforPlayer from './pages/Main/MainforPlayer';
-// import Problem from './components/Problem/Problem';
 
 function App() {
   return (

@@ -1,10 +1,6 @@
 import { useState, useEffect } from 'react';
 import { question, hamlet2 } from '../../../types';
-import styled from "styled-components";
-import { colors } from '../../../styles/style';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-import { Router } from 'react-router-dom';
-import { render } from '@testing-library/react';
 import ReactWordcloud from 'react-wordcloud';
 import { StyledDiv, Styledtitle, StyleDiv2, StyledTimer, StyledScore, StyledInput, StyledDiv3, AdminButton } from './styles';
 import Spinner from '../../../images/Spinner.gif';
@@ -14,14 +10,13 @@ type HamletProps = {
   parentCallback: () => void;
 }
 
-
-
 const Survey = ({survey, parentCallback} : HamletProps) => { 
   const { questionId, kinds, time, orders, multiple, contents} = survey;
   const [ isResult, setResult ] = useState<boolean>(false);
   const [ isAdmin, setAdmin ] = useState<boolean>(false);
   const [ isselcted, setSelcted ] = useState<boolean>(false);
-  const [isloading, setLoading] = useState<boolean>(true);
+  const [ isloading, setLoading ] = useState<boolean>(true);
+  const [ Inputvalue, setInputValue ] = useState<string>('');
 
   var time1 = (time*2)/3;
   var time2 = time/3;
@@ -100,7 +95,7 @@ const Survey = ({survey, parentCallback} : HamletProps) => {
             isPlaying
             duration={3}
             colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-            colorsTime={[3,2,1, 0]}
+            colorsTime={[3,2,1,0]}
             onComplete={ () => setLoading(!isloading)}
             size={500}
           >{renderTime}</CountdownCircleTimer>
@@ -167,8 +162,8 @@ const Survey = ({survey, parentCallback} : HamletProps) => {
                         <StyledScore>-</StyledScore>
                         <Styledtitle>{contents}</Styledtitle>
                       </StyleDiv2>
-                      <StyledInput placeholder='입력하세요'/>
-                      <AdminButton onClick={():void => {select()}} >제출</AdminButton>
+                      <StyledInput placeholder='입력하세요' onChange={(event) => setInputValue(event.target.value)}/>
+                      <AdminButton onClick={():void => {select(); }} >제출</AdminButton>
                     </StyledDiv>
                 }
               </>

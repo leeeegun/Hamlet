@@ -1,11 +1,12 @@
 import logo from '../../images/logo.png';
-import {useLocation} from 'react-router-dom';
-import {StyledInput, StyledHeader, StyledApp, StyledLogo} from './styles';
+import { useLocation } from 'react-router-dom';
+import { StyledInput, StyledHeader, StyledApp, StyledLogo } from './styles';
 import { useEffect } from 'react';
 
 const MainforPlayer = () => {
   const location:any = useLocation();
   console.log(location.state.code); // 코드값
+
   return(
     <StyledApp>
       <StyledHeader>

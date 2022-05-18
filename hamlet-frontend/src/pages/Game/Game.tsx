@@ -7,11 +7,11 @@ import Subjective from '../../components/Problem/Subjective/Subjective';
 import axios from 'axios';
 import { StyledLogo, StyledApp, StyledRoom } from './styles';
 import Result from '../Result/Result';
-
+import { hamlet2 } from '../../types';
 
 const Game = ()  => { // myQs : question[]
-  const [hamletdata, sethamletdata] = useState<any>([]);
-  const [currenthamlet, setcurrent] = useState<any>([]);
+  const [hamletdata, sethamletdata] = useState<hamlet2[]>([]);
+  const [currenthamlet, setcurrent] = useState<hamlet2>();
   const hamletId = 3;
 
   useLayoutEffect(()=>{
