@@ -64,120 +64,120 @@ const Subjective = ({ subjective, parentCallback} : HamletProps) => { // poll : 
 
   return(
     <>
-    {
-      isloading ?
-      <CountdownCircleTimer
-        isPlaying
-        duration={3}
-        colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-        colorsTime={[3,2,1, 0]}
-        onComplete={ () => setLoading(!isloading)}
-        size={500}
-      >{renderTime}</CountdownCircleTimer>
-      :
-      isResult ? 
-        isAdmin ? 
-          <>
-            <StyledDiv>
-              <StyleDiv2>
-                <StyledScore>{point}</StyledScore>
-                <Styledtitle>{contents}</Styledtitle>
-              </StyleDiv2>
-              <StyledResult>{answer}</StyledResult>
-            </StyledDiv>
-            <StyledDiv3>
-              <AdminButton onClick={(): void=> parentCallback()}>
-                다음 문제 풀기
-              </AdminButton>
-            </StyledDiv3>
-          </>
+      {
+        isloading ?
+          <CountdownCircleTimer
+            isPlaying
+            duration={3}
+            colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+            colorsTime={[3,2,1, 0]}
+            onComplete={ () => setLoading(!isloading)}
+            size={500}
+          >{renderTime}</CountdownCircleTimer>
         :
-          <StyledDiv>
-            {
-              isAnswer ?
-                result ?
-                  <>
-                    <StyleDiv2>
-                      <StyledScore>{point}</StyledScore>
-                      <Styledtitle>{contents}</Styledtitle>
-                    </StyleDiv2>
-                    <StyledResult>{answer}</StyledResult>
-                  </>
-                :
-                  <>
-                    <ConrrectAnswer point={point} isCorrect={true} />
-                    <AdminButton onClick={():void=> nextresult()}>넘어가기</AdminButton>
-                  </>
-              :
-                result ?
-                  <>
-                    <StyleDiv2>
-                      <StyledScore>{point}</StyledScore>
-                      <Styledtitle>{contents}</Styledtitle>
-                    </StyleDiv2>
-                    <StyledResult>{answer}</StyledResult>
-                  </>
-                :
-                  <>
-                    <ConrrectAnswer point={point} isCorrect={false} />
-                    <AdminButton onClick={():void=> nextresult()}>넘어가기</AdminButton>
-                  </>
-
-            }
-            
-          </StyledDiv>
-    : isAdmin ?
-      <>
-        <CountdownCircleTimer
-          isPlaying
-          duration={time}
-          colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-          colorsTime={[time, time1, time2, 0]}
-          onComplete={ () => setResult(!isResult)}
-        >{renderTime}</CountdownCircleTimer>
-        <StyledDiv>
-          <StyleDiv2>
-            <StyledScore>{point}</StyledScore>
-            <Styledtitle>{contents}</Styledtitle>
-          </StyleDiv2>
-          <StyledInput placeholder='입력하세요'/>
-        </StyledDiv>
-        <StyledDiv3>
-          <AdminButton onClick={():void=>selectAnswer()}>
-            Skip
-          </AdminButton>
-          <AdminButton>
-            정답공개
-          </AdminButton>
-        </StyledDiv3>
-      </>
-    :
-      <>
-      <CountdownCircleTimer
-          isPlaying
-          duration={time}
-          colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-          colorsTime={[time, time1, time2, 0]}
-          onComplete={ () => setResult(!isResult)}
-        >{renderTime}</CountdownCircleTimer>
-        {
-        isselcted ?
-          <StyledDiv>
-            <img src={Spinner} alt="로딩중" />
-            <div>다른 교육생들을 기다리고 있어요</div>
-          </StyledDiv>
+          isResult ? 
+            isAdmin ? 
+              <>
+                <StyledDiv>
+                  <StyleDiv2>
+                    <StyledScore>{point}</StyledScore>
+                    <Styledtitle>{contents}</Styledtitle>
+                  </StyleDiv2>
+                  <StyledResult>{answer}</StyledResult>
+                </StyledDiv>
+                <StyledDiv3>
+                  <AdminButton onClick={(): void=> parentCallback()}>
+                    다음 문제 풀기
+                  </AdminButton>
+                </StyledDiv3>
+              </>
           :
+            <StyledDiv>
+              {
+                isAnswer ?
+                  result ?
+                    <>
+                      <StyleDiv2>
+                        <StyledScore>{point}</StyledScore>
+                        <Styledtitle>{contents}</Styledtitle>
+                      </StyleDiv2>
+                      <StyledResult>{answer}</StyledResult>
+                    </>
+                  :
+                    <>
+                      <ConrrectAnswer point={point} isCorrect={true} />
+                      <AdminButton onClick={():void=> nextresult()}>넘어가기</AdminButton>
+                    </>
+                :
+                  result ?
+                    <>
+                      <StyleDiv2>
+                        <StyledScore>{point}</StyledScore>
+                        <Styledtitle>{contents}</Styledtitle>
+                      </StyleDiv2>
+                      <StyledResult>{answer}</StyledResult>
+                    </>
+                  :
+                    <>
+                      <ConrrectAnswer point={point} isCorrect={false} />
+                      <AdminButton onClick={():void=> nextresult()}>넘어가기</AdminButton>
+                    </>
+
+              }
+              
+            </StyledDiv>
+      : isAdmin ?
+        <>
+          <CountdownCircleTimer
+            isPlaying
+            duration={time}
+            colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+            colorsTime={[time, time1, time2, 0]}
+            onComplete={ () => setResult(!isResult)}
+          >{renderTime}</CountdownCircleTimer>
           <StyledDiv>
             <StyleDiv2>
               <StyledScore>{point}</StyledScore>
               <Styledtitle>{contents}</Styledtitle>
             </StyleDiv2>
-            <StyledInput placeholder='입력하세요' onChange={(event) => setInputValue(event.target.value)}/>
-            <AdminButton onClick={():void => {select(); discrimination(Inputvalue); }} >제출</AdminButton>
+            <StyledInput placeholder='입력하세요'/>
           </StyledDiv>
-        }
-      </>
-    }
+          <StyledDiv3>
+            <AdminButton onClick={():void=>selectAnswer()}>
+              Skip
+            </AdminButton>
+            <AdminButton>
+              정답공개
+            </AdminButton>
+          </StyledDiv3>
+        </>
+      :
+        <>
+          <CountdownCircleTimer
+            isPlaying
+            duration={time}
+            colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+            colorsTime={[time, time1, time2, 0]}
+            onComplete={ () => setResult(!isResult)}
+          >{renderTime}</CountdownCircleTimer>
+          {
+            isselcted ?
+              <StyledDiv>
+                <img src={Spinner} alt="로딩중" />
+                <div>다른 교육생들을 기다리고 있어요</div>
+              </StyledDiv>
+            :
+              <StyledDiv>
+                <StyleDiv2>
+                  <StyledScore>{point}</StyledScore>
+                  <Styledtitle>{contents}</Styledtitle>
+                </StyleDiv2>
+                <StyledInput placeholder='입력하세요' onChange={(event) => setInputValue(event.target.value)}/>
+                <AdminButton onClick={():void => {select(); discrimination(Inputvalue); }} >제출</AdminButton>
+              </StyledDiv>
+          }
+        </>
+      }
     </>
   );
 }

@@ -13,7 +13,6 @@ const Poll = ({poll, parentCallback} : HamletProps) => {
   const { questionId, kinds, time, orders, multiple, contents, options} = poll;
   const [ isResult, setResult ] = useState<boolean>(false);
   const [ isAdmin, setAdmin ] = useState<boolean>(false);
-  const [ iswaiting, setWaiting ] = useState<boolean>(false);
   const [ answerData, setAnswerData] = useState<string>('');
   const [ isAnswer, setAnswer ] = useState<boolean>(false);
   const [isloading, setLoading] = useState<boolean>(true);
@@ -124,12 +123,12 @@ const Poll = ({poll, parentCallback} : HamletProps) => {
       : isAdmin ?
         <>
           <CountdownCircleTimer
-              isPlaying
-              duration={time}
-              colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-              colorsTime={[time, time1, time2, 0]}
-              onComplete={ () => setResult(!isResult)}
-            >{renderTime}</CountdownCircleTimer>
+            isPlaying
+            duration={time}
+            colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+            colorsTime={[time, time1, time2, 0]}
+            onComplete={ () => setResult(!isResult)}
+          >{renderTime}</CountdownCircleTimer>
           <StyledDiv>
             <StyleDiv2>
               <StyledScore>-</StyledScore>
@@ -149,13 +148,14 @@ const Poll = ({poll, parentCallback} : HamletProps) => {
       :
         <>
           <CountdownCircleTimer
-              isPlaying
-              duration={time}
-              colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-              colorsTime={[time, time1, time2, 0]}
-              onComplete={ () => setResult(!isResult)}
-            >{renderTime}</CountdownCircleTimer>
-            {isselcted ?
+            isPlaying
+            duration={time}
+            colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+            colorsTime={[time, time1, time2, 0]}
+            onComplete={ () => setResult(!isResult)}
+          >{renderTime}</CountdownCircleTimer>
+          {
+            isselcted ?
               <StyledDiv>
                 <img src={Spinner} alt="로딩중" />
                 <div>다른 교육생들을 기다리고 있어요</div>

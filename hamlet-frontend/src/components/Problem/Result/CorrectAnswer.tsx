@@ -1,10 +1,10 @@
 import {StyledDivCorrectAnswer, StyledDiv2, StyledDiv3,NextButton} from './styles';
 
-
 type CorrectProps = {
   point: number,
   isCorrect:boolean
 }
+
 const ConrrectAnswer = ({ point, isCorrect }:CorrectProps) => {
   return(
     <StyledDivCorrectAnswer>
@@ -16,7 +16,6 @@ const ConrrectAnswer = ({ point, isCorrect }:CorrectProps) => {
           :
             <p>+0</p>
         }
-        
       </StyledDiv2>
       <StyledDiv3>
         <p>1. 이름 해당문제점수1등 </p>

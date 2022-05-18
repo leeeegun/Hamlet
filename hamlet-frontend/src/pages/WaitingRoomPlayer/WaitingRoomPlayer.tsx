@@ -4,8 +4,9 @@ import { StyledLogo, StyledApp, StyledRoom } from './styles';
 import Participant from '../../components/Participant/Participant';
 import NumberOfparticipants from '../../components/Participant/number/numberOfparticipants';
 
+
+
 function WaitingRoomPlayer() {
-  
   return (
     <StyledApp>
       <StyledRoom>

@@ -88,76 +88,51 @@ const Survey = ({survey, parentCallback} : HamletProps) => {
     );
   };
 
+  const select = () => {
+    setSelcted(true);
+  }
 
   return(
     <>
       {
         isloading ?
-        <CountdownCircleTimer
-          isPlaying
-          duration={3}
-          colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-          colorsTime={[3,2,1, 0]}
-          onComplete={ () => setLoading(!isloading)}
-          size={500}
-        >{renderTime}</CountdownCircleTimer>
+          <CountdownCircleTimer
+            isPlaying
+            duration={3}
+            colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+            colorsTime={[3,2,1, 0]}
+            onComplete={ () => setLoading(!isloading)}
+            size={500}
+          >{renderTime}</CountdownCircleTimer>
         :
-        isResult ? 
-          isAdmin ?
-          <>
-            <StyledDiv>
-              <Styledtitle>contents</Styledtitle>
-              <ReactWordcloud words={words} options={options} /> 
-            </StyledDiv>
-            <StyledDiv3>
-              <AdminButton onClick={(): void=> parentCallback()}>
-                다음 문제 풀기
-              </AdminButton>
-            </StyledDiv3>
-          </>
-          :
-          <StyledDiv>
-            <Styledtitle>contents</Styledtitle>
-            <ReactWordcloud words={words} options={options} /> 
-          </StyledDiv>
-        :
-          isAdmin ? 
-          <>
-            <CountdownCircleTimer
-              isPlaying
-              duration={time}
-              colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-              colorsTime={[time, time1, time2, 0]}
-              onComplete={ () => setResult(!isResult)}
-            >{renderTime}</CountdownCircleTimer>
-            <StyledDiv>
-              <StyleDiv2>
-                <StyledScore>-</StyledScore>
-                <Styledtitle>{contents}</Styledtitle>
-              </StyleDiv2>
-              <StyledInput placeholder='입력하세요'/>
-            </StyledDiv>
-            <StyledDiv3>
-              <AdminButton onClick={(): void => selectAnswer()}>
-                Skip
-              </AdminButton>
-            </StyledDiv3>
-          </>
-          : 
-            <>
-              <CountdownCircleTimer
-                isPlaying
-                duration={time}
-                colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-                colorsTime={[time, time1, time2, 0]}
-                onComplete={ () => setResult(!isResult)}
-              >{renderTime}</CountdownCircleTimer>
-              {isselcted ?
+          isResult ?
+            isAdmin ?
+              <>
                 <StyledDiv>
-                  <img src={Spinner} alt="로딩중" />
-                  <div>다른 교육생들을 기다리고 있어요</div>
+                  <Styledtitle>contents</Styledtitle>
+                  <ReactWordcloud words={words} options={options} /> 
                 </StyledDiv>
-                :
+                <StyledDiv3>
+                  <AdminButton onClick={(): void=> parentCallback()}>
+                    다음 문제 풀기
+                  </AdminButton>
+                </StyledDiv3>
+              </>
+            :
+              <StyledDiv>
+                <Styledtitle>contents</Styledtitle>
+                <ReactWordcloud words={words} options={options} /> 
+              </StyledDiv>
+          :
+            isAdmin ? 
+              <>
+                <CountdownCircleTimer
+                  isPlaying
+                  duration={time}
+                  colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+                  colorsTime={[time, time1, time2, 0]}
+                  onComplete={ () => setResult(!isResult)}
+                >{renderTime}</CountdownCircleTimer>
                 <StyledDiv>
                   <StyleDiv2>
                     <StyledScore>-</StyledScore>
@@ -165,8 +140,38 @@ const Survey = ({survey, parentCallback} : HamletProps) => {
                   </StyleDiv2>
                   <StyledInput placeholder='입력하세요'/>
                 </StyledDiv>
-              }
-            </>
+                <StyledDiv3>
+                  <AdminButton onClick={(): void => selectAnswer()}>
+                    Skip
+                  </AdminButton>
+                </StyledDiv3>
+              </>
+            : 
+              <>
+                <CountdownCircleTimer
+                  isPlaying
+                  duration={time}
+                  colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+                  colorsTime={[time, time1, time2, 0]}
+                  onComplete={ () => setResult(!isResult)}
+                >{renderTime}</CountdownCircleTimer>
+                {
+                  isselcted ?
+                    <StyledDiv>
+                      <img src={Spinner} alt="로딩중" />
+                      <div>다른 교육생들을 기다리고 있어요</div>
+                    </StyledDiv>
+                  :
+                    <StyledDiv>
+                      <StyleDiv2>
+                        <StyledScore>-</StyledScore>
+                        <Styledtitle>{contents}</Styledtitle>
+                      </StyleDiv2>
+                      <StyledInput placeholder='입력하세요'/>
+                      <AdminButton onClick={():void => {select()}} >제출</AdminButton>
+                    </StyledDiv>
+                }
+              </>
       }
     </>
   );
