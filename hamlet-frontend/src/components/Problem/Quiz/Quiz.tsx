@@ -115,6 +115,11 @@ const Quiz = ({ quiz, parentCallback} : HamletProps) => { // quiz : question
                     <Animate_progress>
                       <Progress_span data_progress={28} wcolor={"blue"}>28%</Progress_span>
                     </Animate_progress>
+                    <StyledDiv3>
+                    <AdminButton onClick={(): void=> parentCallback()}>
+                      다음 문제 풀기
+                    </AdminButton>
+                  </StyledDiv3>
                   </>
                 :
                   <>

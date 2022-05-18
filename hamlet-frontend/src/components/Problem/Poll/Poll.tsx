@@ -16,7 +16,7 @@ const Poll = ({poll, parentCallback} : HamletProps) => {
   const [ iswaiting, setWaiting ] = useState<boolean>(false);
   const [ answerData, setAnswerData] = useState<string>('');
   const [ isAnswer, setAnswer ] = useState<boolean>(false);
-  const [isloading, setLoading] = useState<boolean>(false);
+  const [isloading, setLoading] = useState<boolean>(true);
   const [ isselcted, setSelcted ] = useState<boolean>(false);
 
   var time1 = (time*2)/3

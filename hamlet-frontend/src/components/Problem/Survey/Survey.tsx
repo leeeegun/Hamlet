@@ -21,7 +21,7 @@ const Survey = ({survey, parentCallback} : HamletProps) => {
   const [ isResult, setResult ] = useState<boolean>(false);
   const [ isAdmin, setAdmin ] = useState<boolean>(false);
   const [ isselcted, setSelcted ] = useState<boolean>(false);
-  const [isloading, setLoading] = useState<boolean>(false);
+  const [isloading, setLoading] = useState<boolean>(true);
 
   var time1 = (time*2)/3;
   var time2 = time/3;

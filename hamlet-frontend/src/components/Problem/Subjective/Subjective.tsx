@@ -16,7 +16,7 @@ const Subjective = ({ subjective, parentCallback} : HamletProps) => { // poll : 
   const [ isSelected, setSelected ] = useState<boolean>(false);
   const [ isResult, setResult ] = useState<boolean>(false);
   const [ isAdmin, setAdmin ] = useState<boolean>(false);
-  const [isloading, setLoading] = useState<boolean>(false);
+  const [isloading, setLoading] = useState<boolean>(true);
   const [ isselcted, setSelcted ] = useState<boolean>(false);
   const [ Inputvalue, setInputValue ] = useState<string>('');
   const [ isAnswer, setAnswer ] = useState<boolean>(false);
