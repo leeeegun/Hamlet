@@ -1,12 +1,11 @@
 import logo from '../../images/logo.png';
 import {useLocation} from 'react-router-dom';
 import {StyledInput, StyledHeader, StyledApp, StyledLogo} from './styles';
-
-
+import { useEffect } from 'react';
 
 const MainforPlayer = () => {
-  let location = useLocation();
-  // {location.state.code} 이게 코드명
+  const location:any = useLocation();
+  console.log(location.state.code); // 코드값
   return(
     <StyledApp>
       <StyledHeader>
