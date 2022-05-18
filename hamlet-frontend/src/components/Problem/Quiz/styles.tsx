@@ -18,14 +18,28 @@ const StyledOption = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: colors.pointSub2
-  margin: 0 0 1em 0;
-  width: 40%;
-  height: 2.5em;
-  border-radius: 50px;
-  font: 0.7em bold;
+  background-color: colors.pointSub2;
+  margin: 0 3em 3em 3em;
+  width: 10em;
+  height: 10em;
+  border-radius: 20px;
+  font: 1em bold;
   color: "black";
 `;
+
+const StyleDivOption = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40vh;
+  &:hover ${StyledOption}{
+    background-color: colors.bgDark;
+    color: "white";
+  }
+`;
+
+
 
 const  Styledtitle = styled.label`
   margin : 2.5em 0 5em 3em;
@@ -55,9 +69,11 @@ const StyleDiv2 = styled.div`
   width: 90%;
 `;
 
+
+
 const Animate_progress = styled.div`
   width: 50%;
-  height: 4vh;
+  height: 5vh;
   margin: 20px 10px;
   border: 1px solid rgb(189, 113, 113);
   overflow: hidden;
@@ -107,4 +123,4 @@ const StyledTimer = styled.div`
   align-items: center;
   font-size: 2em;
 `
-export { StyledDiv, StyledTimer, StyledDiv3, AdminButton, Progress_span, Animate_progress, StyleDiv2, StyledScore, Styledtitle, StyledOption};
+export { StyledDiv, StyledTimer, StyledDiv3, StyleDivOption, AdminButton, Progress_span, Animate_progress, StyleDiv2, StyledScore, Styledtitle, StyledOption}; 

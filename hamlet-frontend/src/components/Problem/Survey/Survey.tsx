@@ -7,7 +7,7 @@ import { Router } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import ReactWordcloud from 'react-wordcloud';
 import { StyledDiv, Styledtitle, StyleDiv2, StyledTimer, StyledScore, StyledInput, StyledDiv3, AdminButton } from './styles';
-
+import Spinner from '../../../images/Spinner.gif';
 
 type HamletProps = {
   survey: hamlet2,
@@ -19,10 +19,12 @@ type HamletProps = {
 const Survey = ({survey, parentCallback} : HamletProps) => { 
   const { questionId, kinds, time, orders, multiple, contents} = survey;
   const [ isResult, setResult ] = useState<boolean>(false);
-  const [ isAdmin, setAdmin ] = useState<boolean>(true);
-  const [ isSelected, setSelected ] = useState<boolean>(false);
-  
+  const [ isAdmin, setAdmin ] = useState<boolean>(false);
+  const [ isselcted, setSelcted ] = useState<boolean>(false);
+  const [isloading, setLoading] = useState<boolean>(false);
 
+  var time1 = (time*2)/3;
+  var time2 = time/3;
   const words = [
     {
       text: '정답123',
@@ -74,9 +76,11 @@ const Survey = ({survey, parentCallback} : HamletProps) => {
     setResult(true);
   }
 
-  // useEffect(() => {
-  //   parentCallback();
-  // },[isSelected])
+  useEffect(() => {
+    if (localStorage.getItem("token")){
+      setAdmin(true);
+    }
+  }, [])
 
   const renderTime = ({ remainingTime }:any) => {
     return (
@@ -87,7 +91,18 @@ const Survey = ({survey, parentCallback} : HamletProps) => {
 
   return(
     <>
-      {isResult ? 
+      {
+        isloading ?
+        <CountdownCircleTimer
+          isPlaying
+          duration={3}
+          colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+          colorsTime={[3,2,1, 0]}
+          onComplete={ () => setLoading(!isloading)}
+          size={500}
+        >{renderTime}</CountdownCircleTimer>
+        :
+        isResult ? 
           isAdmin ?
           <>
             <StyledDiv>
@@ -112,7 +127,7 @@ const Survey = ({survey, parentCallback} : HamletProps) => {
               isPlaying
               duration={time}
               colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-              colorsTime={[10, 6, 3, 0]}
+              colorsTime={[time, time1, time2, 0]}
               onComplete={ () => setResult(!isResult)}
             >{renderTime}</CountdownCircleTimer>
             <StyledDiv>
@@ -134,16 +149,23 @@ const Survey = ({survey, parentCallback} : HamletProps) => {
                 isPlaying
                 duration={time}
                 colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-                colorsTime={[10, 6, 3, 0]}
+                colorsTime={[time, time1, time2, 0]}
                 onComplete={ () => setResult(!isResult)}
               >{renderTime}</CountdownCircleTimer>
-              <StyledDiv>
-                <StyleDiv2>
-                  <StyledScore>-</StyledScore>
-                  <Styledtitle>{contents}</Styledtitle>
-                </StyleDiv2>
-                <StyledInput placeholder='입력하세요'/>
-              </StyledDiv>
+              {isselcted ?
+                <StyledDiv>
+                  <img src={Spinner} alt="로딩중" />
+                  <div>다른 교육생들을 기다리고 있어요</div>
+                </StyledDiv>
+                :
+                <StyledDiv>
+                  <StyleDiv2>
+                    <StyledScore>-</StyledScore>
+                    <Styledtitle>{contents}</Styledtitle>
+                  </StyleDiv2>
+                  <StyledInput placeholder='입력하세요'/>
+                </StyledDiv>
+              }
             </>
       }
     </>

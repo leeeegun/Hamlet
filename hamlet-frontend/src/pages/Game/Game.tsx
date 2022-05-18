@@ -16,6 +16,7 @@ import Result from '../Result/Result';
 const Game = ()  => { // myQs : question[]
   const [hamletdata, sethamletdata] = useState<any>([]);
   const [currenthamlet, setcurrent] = useState<any>([]);
+  const [admin, setAdmin] = useState<string>('');
   const hamletId = 3;
 
   useLayoutEffect(()=>{
@@ -38,6 +39,8 @@ const Game = ()  => { // myQs : question[]
     }
   }
 
+  
+
   const handleCallback = () =>{
     var indexdata = localStorage.getItem('index')
     var indexdata2 = Number(indexdata);
@@ -56,7 +59,7 @@ const Game = ()  => { // myQs : question[]
             {
               currenthamlet.kinds === 1
               &&
-              <Quiz parentCallback={handleCallback} quiz={currenthamlet}/>
+              <Quiz parentCallback={handleCallback} quiz={currenthamlet} />
             }
             {
               currenthamlet.kinds === 2
