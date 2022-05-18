@@ -21,7 +21,7 @@ import javax.validation.Valid;
 @Api(value = "유저 API", tags = {"User"})
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
 
 	@Autowired
@@ -103,5 +103,15 @@ public class UserController {
 		} catch (Exception e) {
 			return ResponseEntity.status(403).body(BaseResponseBody.of(401, "fail"));
 		}
+	}
+
+	@GetMapping("/{userEmail}/exists")
+	@ApiOperation(value = "이메일 중복 검사", notes = "중복검사 버튼 클릭 시 DB정보와 입력 정보를 비교한다.")
+	@ApiResponses({
+			@ApiResponse(code = 201, message = "성공"),
+			@ApiResponse(code = 401, message = "인증 실패"),
+	})
+	public ResponseEntity<Boolean> checkIdDuplicate(@PathVariable String userEmail){
+		return ResponseEntity.ok(!userService.checkIdDuplicate(userEmail));
 	}
 }

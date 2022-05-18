@@ -9,4 +9,5 @@ public interface UserService {
 	User getUserInfo(Long userId);
 	User getUserInfo(String email);
 	void deleteUser(Long userId);
+	boolean checkIdDuplicate(String userEmail);
 }

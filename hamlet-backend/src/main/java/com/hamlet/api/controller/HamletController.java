@@ -1,5 +1,6 @@
 package com.hamlet.api.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import com.hamlet.api.service.UserService;
@@ -45,8 +46,12 @@ public class HamletController {
 		User user = userService.getUserInfo(email);
 
 		try {
-			hamletService.createHamlet(user, hamletCreateInfo);
-			return ResponseEntity.status(201).body(BaseResponseBody.of(201, "Success"));
+			if (hamletCreateInfo.getTitle() == ""){
+				throw new Exception("Title is empty");
+			} else {
+				hamletService.createHamlet(user, hamletCreateInfo);
+				return ResponseEntity.status(201).body(BaseResponseBody.of(201, "Success"));
+			}
 		} catch (Exception e) {
 			return ResponseEntity.status(401).body(BaseResponseBody.of(401, "fail"));
 		}
