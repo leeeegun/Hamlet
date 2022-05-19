@@ -1,11 +1,9 @@
-!-- logo -->
-
-## 🌍 MINT
+## ⏰ Hamlet
 ### 🎉 프로젝트 소개
 ```Hamlet```은 **WebSocket**을 이용해서   
 퀴즈 / 설문을 진행하고, 결과를 관리하는 프로젝트입니다.  
-* [MINT HOMEPAGE](http://forhamlet.net/)
-* [MINT NOTION](https://jungle-baseball-7aa.notion.site/Hamlet-SNS-1b4647260d264fcfa78c6ed35bf3521a)
+* [Hamlet HOMEPAGE](http://forhamlet.net/)
+* [Hamlet NOTION](https://jungle-baseball-7aa.notion.site/Hamlet-SNS-1b4647260d264fcfa78c6ed35bf3521a)
 
 ### 💡 기술 스택
 #### FrontEnd
@@ -54,14 +52,17 @@
  * API 서버 구현
 </details>
 <details><summary><strong>이호성</strong> [ BE ]</summary>
+
  * API 서버 구현
  * 웹소켓 서버 구현
 </details>
 <details><summary><strong>이규은</strong> [ FE ]</summary>
+
  * FE 설계
  * FE 구현
 </details>
 <details><summary><strong>홍종규</strong> [ FE ]</summary>
+
  * FE 설계
  * FE 구현
 </details>
