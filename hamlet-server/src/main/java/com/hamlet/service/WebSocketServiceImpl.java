@@ -12,6 +12,7 @@ import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -32,7 +33,7 @@ public class WebSocketServiceImpl implements WebSocketService {
 
         template.convertAndSend("/room/" + code, message);
 
-        redisUtil.setData("MANAGER" + code, "exist");
+        redisUtil.setData("/MANAGER/" + code, "exist");
     }
 
     @Override
@@ -53,7 +54,7 @@ public class WebSocketServiceImpl implements WebSocketService {
 
         template.convertAndSend("/room/" + code, message);
 
-        redisUtil.addZdata("USER_LIST" + code, message.getSender(), 0.0);
+        redisUtil.addZdata("/USER_LIST/" + code, message.getSender(), 0.0);
     }
 
     @Override
@@ -75,7 +76,9 @@ public class WebSocketServiceImpl implements WebSocketService {
             content = 내용
             answer = 정답여부
          */
+
         ArrayList list = (ArrayList) message.getContent();
+        redisUtil.setData("/QUESTION_CNT/" + code, Integer.toString(list.size()));
         for(int i = 0; i < list.size(); i++) {
             ArrayList questions = (ArrayList) list.get(i);
             String kind = (String) questions.get(0);
@@ -172,9 +175,26 @@ public class WebSocketServiceImpl implements WebSocketService {
     public void end(String code, Message message) {
         message.setContent(viewRanking("/USER_LIST/" + code, 0, 2));
         template.convertAndSend("/room/" + code, message);
+
+        deleteInRedis(code);
+    }
+    @Transactional
+    public void deleteInRedis(String code) {
+        String questionCnt = redisUtil.getData("/QUESTION_CNT/" + code);
+        if (questionCnt != null) {
+            int size = Integer.parseInt(questionCnt);
+            for (int i = 0; i < size; i++) {
+                redisUtil.deleteZdata("/RANKING/" + code + "/QUESTION/" + i,0, -1);
+            }
+        }
+
+        redisUtil.deleteZdata("/USER_LIST/" + code, 0, -1);
+        redisUtil.deleteData("/MANAGER/" + code);
+        redisUtil.deleteData(code);
     }
 
     @Override
+    @Transactional
     public void sendMessage(String code, Message message) {
         String answer = (String) message.getContent();
 
