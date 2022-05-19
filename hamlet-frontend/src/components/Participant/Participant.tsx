@@ -9,6 +9,7 @@ const StyledDiv = styled.div`
   width: 80%;
   min-height: 80vh;
   border-radius: 10px;
+  margin-bottom: 1em;
 
   & .Participant{
     display: flex;

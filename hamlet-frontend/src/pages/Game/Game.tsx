@@ -34,8 +34,6 @@ const Game = ()  => { // myQs : question[]
     }
   }
 
-  
-
   const handleCallback = () =>{
     var indexdata = localStorage.getItem('index')
     var indexdata2 = Number(indexdata);

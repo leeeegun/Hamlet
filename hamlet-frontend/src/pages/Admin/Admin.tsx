@@ -276,7 +276,6 @@ const Admin = () => {
         setMyHamlets(myham);
         setClosedHamlets(clham);
         setMyQuestions(myQs);
-
     }, []);
 
 

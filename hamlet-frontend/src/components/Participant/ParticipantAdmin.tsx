@@ -71,12 +71,6 @@ const StyledInput = styled.input`
 const ParticipantAdmin = () => {
   return(
     <>
-      <StyledDiv2>
-        <StyledInput placeholder='제목을 입력해주세요'/>
-        <Styledtitle>
-          참여코드{}
-        </Styledtitle>
-      </StyledDiv2>
       <StyledDiv>
         <div className='Participant'>여기용</div>
         <div className='Participant'/>
