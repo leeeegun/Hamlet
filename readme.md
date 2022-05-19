@@ -48,23 +48,22 @@
 
  
 ### 🧑 팀원 소개
-<details><summary><strong>이건</strong> [ FE ]&nbsp;&nbsp;&nbsp;<em>Click!</em></summary>
+<details><summary><strong>이건</strong> [ BE ]&nbsp;&nbsp;&nbsp;<em>Click!</em></summary>
 
- * **팀장**
+ * 팀장 / 배포
  * API 서버 구현
- * 배포
 </details>
-<details><summary><strong>이호성</strong> [ FE ]</summary>
-  * API 서버 구현
-  * 웹소켓 서버 구현
+<details><summary><strong>이호성</strong> [ BE ]</summary>
+ * API 서버 구현
+ * 웹소켓 서버 구현
 </details>
 <details><summary><strong>이규은</strong> [ FE ]</summary>
-  * FE 설계
-  * FE 구현
+ * FE 설계
+ * FE 구현
 </details>
-<details><summary><strong>홍종규</strong> [ BE ]</summary>
-  * FE 설계
-  * FE 구현
+<details><summary><strong>홍종규</strong> [ FE ]</summary>
+ * FE 설계
+ * FE 구현
 </details>
 
 
