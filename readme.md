@@ -69,10 +69,10 @@
 
 
 ### :penguin: 빌드 및 배포
-* [보러가기✔](https://lab.ssafy.com/s06-blockchain-nft-sub2/S06P22A106/-/blob/develop/exec/%EB%B9%8C%EB%93%9C%20%EB%B0%8F%20%EB%B0%B0%ED%8F%AC.md)
+* [보러가기✔](https://lab.ssafy.com/s06-final/S06P31A206/-/blob/release/exec/%EB%B9%8C%EB%93%9C%20%EB%B0%8F%20%EB%B0%B0%ED%8F%AC.md)
 
 ### :triangular_flag_on_post: 버전 정보
-* [보러가기✔](https://lab.ssafy.com/s06-blockchain-nft-sub2/S06P22A106/-/blob/develop/exec/%EB%B2%84%EC%A0%84%EC%A0%95%EB%B3%B4.md)
+* [보러가기✔](https://lab.ssafy.com/s06-final/S06P31A206/-/blob/release/exec/%EB%B2%84%EC%A0%84%EC%A0%95%EB%B3%B4.md)
 
 ### :beginner: DB 정보
-* [보러가기✔](https://lab.ssafy.com/s06-blockchain-nft-sub2/S06P22A106/-/blob/develop/exec/DB_%EC%A0%95%EB%B3%B4.md)
+* [보러가기✔](https://lab.ssafy.com/s06-final/S06P31A206/-/blob/release/exec/DB_%EC%A0%95%EB%B3%B4.md)
