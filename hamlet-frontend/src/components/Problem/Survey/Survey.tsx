@@ -90,7 +90,7 @@ const Survey = ({survey, parentCallback} : HamletProps) => {
   return(
     <>
       {
-        isloading ?
+        isloading ? // 처음에 문제에 들어왔을때 3초의 대기시간을 가진다.
           <CountdownCircleTimer
             isPlaying
             duration={3}
@@ -99,9 +99,10 @@ const Survey = ({survey, parentCallback} : HamletProps) => {
             onComplete={ () => setLoading(!isloading)}
             size={500}
           >{renderTime}</CountdownCircleTimer>
-        :
-          isResult ?
-            isAdmin ?
+        : // 로딩이 끝난경우
+          isResult ? // 문제의 지정된 시간이 끝났는가? or 관리자가 해당문제에서 Skip버튼을 눌렀는가? 만약 isResult가 true라면 결과 화면을 보여준다. 
+                     //결과화면에서는 사용자들이 제출한 내용이 워드클라우드로 보입니다.
+            isAdmin ? // 결과화면에서 관리자인지 판단한다, 관리자라면 결과화면에서 다음문제로 넘어가기 버튼이 존재한다.
               <>
                 <StyledDiv>
                   <Styledtitle>contents</Styledtitle>
@@ -113,13 +114,13 @@ const Survey = ({survey, parentCallback} : HamletProps) => {
                   </AdminButton>
                 </StyledDiv3>
               </>
-            :
+            : // 결과화면에서 사용자인 경우이다. 사용자에게는 다음문제로 넘어가는 버튼이 존재하지 않는다.
               <StyledDiv>
                 <Styledtitle>contents</Styledtitle>
                 <ReactWordcloud words={words} options={options} /> 
               </StyledDiv>
-          :
-            isAdmin ? 
+          : // 설문의견을 제출하지 않은경우
+            isAdmin ? // 관리자인지 판별
               <>
                 <CountdownCircleTimer
                   isPlaying
@@ -141,7 +142,7 @@ const Survey = ({survey, parentCallback} : HamletProps) => {
                   </AdminButton>
                 </StyledDiv3>
               </>
-            : 
+            : // 사용자인경우
               <>
                 <CountdownCircleTimer
                   isPlaying
@@ -151,9 +152,9 @@ const Survey = ({survey, parentCallback} : HamletProps) => {
                   onComplete={ () => setResult(!isResult)}
                 >{renderTime}</CountdownCircleTimer>
                 {
-                  isselcted ?
+                  isselcted ? // 설문내용을 제출했는지 판별, 이미 제출한경우 시간초가 끝날때 or 관리자가 Skip을 누를때까지 대기하는 화면을 보여준다.
                     <StyledDiv>
-                      <img src={Spinner} alt="로딩중" />
+                      <img src={Spinner} alt="wait" />
                       <div>다른 교육생들을 기다리고 있어요</div>
                     </StyledDiv>
                   :

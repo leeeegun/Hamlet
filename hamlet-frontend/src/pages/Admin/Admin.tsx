@@ -5,7 +5,6 @@ import Question from '../../components/Question/Question';
 import { QuestionType, question, hamlet } from '../../types';
 import { BsPlusLg } from "react-icons/bs";
 import { VscChromeClose } from "react-icons/vsc";
-import Game from '../Game/Game';
 
 type ItemProps = {
     item: hamlet
@@ -178,7 +177,6 @@ const AddBtn = styled.div`
 `
 
 const Admin = () => {
-
     const [selectedLabelIdx, setSelectedLabelIdx] = useState<number>(0);
     const [myHamlets, setMyHamlets] = useState<hamlet[]>([]);
     const [myQuestions, setMyQuestions] = useState<question[]>([]);
@@ -278,8 +276,6 @@ const Admin = () => {
         setMyQuestions(myQs);
     }, []);
 
-
-    
     const onClick = ({id, title, code,date } : hamlet) => {
         setModalOpen(!modalOpen); // 이 햄릿안에 들어있는 질문을 가져와야함
         <div>

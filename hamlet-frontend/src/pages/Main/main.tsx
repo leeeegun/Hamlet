@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import { StyledApp, StyledHeader, StyledLogo, StyledInput, StyledLink } from './styles';
 
 const Main = () => {
-  const [ InputValue, setInputValue ] = useState<string>('');
+  const [ InputValue, setInputValue ] = useState<Object>('');
   let navigate = useNavigate();
 
   useEffect(() => {
