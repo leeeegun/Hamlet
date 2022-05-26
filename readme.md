@@ -7,8 +7,7 @@
 
 ### 💡 기술 스택
 #### FrontEnd
-<img alt="React" src ="https://img.shields.io/badge/React-61DAFB.svg?&style=for-the-badge&logo=react&logoColor=white"/>
-<img alt= "CSS" src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> 
+<img alt="React" src ="https://img.shields.io/badge/React-61DAFB.svg?&style=for-the-badge&logo=react&logoColor=white"/> <img alt= "CSS" src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> 
 <img alt="JavaScript" src ="https://img.shields.io/badge/JavaScript-F7DF1E.svg?&style=for-the-badge&logo=JavaScript&logoColor=white"/>
 <img alt="Babel" src ="https://img.shields.io/badge/Babel-F9DC3E.svg?&style=for-the-badge&logo=Babel&logoColor=white"/>
 <img alt="TypeScript" src ="https://img.shields.io/badge/TypeScript-293C3E.svg?&style=for-the-badge&logo=TypeScript&logoColor=white"/>
@@ -17,8 +16,7 @@
 
 
 #### BackEnd
-<img alt="Spring Boot" src ="https://img.shields.io/badge/Spring Boot-6DB33F.svg?&style=for-the-badge&logo=Spring Boot&logoColor=white"/>
-<img alt="Gradle" src ="https://img.shields.io/badge/Gradle-02303A.svg?&style=for-the-badge&logo=Gradle&logoColor=white"/>
+<img alt="Spring Boot" src ="https://img.shields.io/badge/Spring Boot-6DB33F.svg?&style=for-the-badge&logo=Spring Boot&logoColor=white"/> <img alt="Gradle" src ="https://img.shields.io/badge/Gradle-02303A.svg?&style=for-the-badge&logo=Gradle&logoColor=white"/>
 <img alt="MySQL" src ="https://img.shields.io/badge/MySQL-4479A1.svg?&style=for-the-badge&logo=MySQL&logoColor=white"/>
 <img alt="Redis" src ="https://img.shields.io/badge/Redis-6943A1.svg?&style=for-the-badge&logo=Redis&logoColor=white"/>
 <img alt="WebSocket" src ="https://img.shields.io/badge/Websocket-3200A1.svg?&style=for-the-badge&logo=WebSocket&logoColor=white"/>
@@ -30,19 +28,7 @@
 
 
 ### Co-tool
-<img alt="Jira" src ="https://img.shields.io/badge/Jira-0052CC.svg?&style=for-the-badge&logo=Jira&logoColor=white"/>
-<img alt="GitLab" src ="https://img.shields.io/badge/GitLab-FCA121.svg?&style=for-the-badge&logo=GitLab&logoColor=white"/>
-
-### 시스템 구성도
-
-
-### 📌 주요 기능
-* **홈 화면**
-
-
-* **관리자 페이지** <br>
-
-* **프로젝트 설명 페이지**
+<img alt="Jira" src ="https://img.shields.io/badge/Jira-0052CC.svg?&style=for-the-badge&logo=Jira&logoColor=white"/> <img alt="GitLab" src ="https://img.shields.io/badge/GitLab-FCA121.svg?&style=for-the-badge&logo=GitLab&logoColor=white"/>
 
  
 ### 🧑 팀원 소개
